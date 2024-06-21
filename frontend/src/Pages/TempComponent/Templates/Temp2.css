@@ -1,0 +1,61 @@
+/* Add this CSS to your stylesheet, e.g., App.css */
+
+.birthday-template {
+    text-align: center;
+    background-color: #fdf3f7;
+    border: 2px solid #ff6f91;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .birthday-template h1 {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #ff4081;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+  
+  .birthday-template h2 {
+    font-family: 'Arial', sans-serif;
+    color: #ff6f91;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+  
+  .birthday-template p {
+    font-family: 'Georgia', serif;
+    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .birthday-template .photos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .birthday-template .photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #ff6f91;
+    border-radius: 10px;
+  }
+  
+  /* Additional styles for Temp2 */
+  .birthday-template.temp2 h1 {
+    color: #ff4081;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .birthday-template.temp2 p {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #ff6f91;
+  }
+  

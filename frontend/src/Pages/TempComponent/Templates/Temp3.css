@@ -1,0 +1,39 @@
+.birthday-template.temp3 {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .birthday-template.temp3 h1 {
+    font-size: 2.5em;
+    color: #ff6f61;
+  }
+  
+  .birthday-template.temp3 h2 {
+    font-size: 2em;
+    color: #ffcc00;
+  }
+  
+  .birthday-template.temp3 p {
+    font-size: 1.2em;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .birthday-template.temp3 .photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .birthday-template.temp3 .photo {
+    max-width: 100px;
+    max-height: 100px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  

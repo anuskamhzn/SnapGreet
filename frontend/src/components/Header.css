@@ -1,0 +1,86 @@
+.nav_text:hover {
+    color: black !important;
+  }
+  /* .nav_text:hover {
+    font-size: 16px;
+    color: #424a82 !important;
+    font-weight: lighter;
+  } */
+  
+  .drop {
+    width: 120px;
+  }
+  
+  .logo {
+    color: #ff4c0a !important;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    font-size: 40px !important;
+  }
+  .dropdownText {
+    text-decoration: none;
+    color: #111111;
+  }
+  
+  .dropdownItem:hover .dropdownText {
+    color: #9e2222;
+  }
+  .drop a:hover {
+    background-color: white;
+  }
+  
+  @media screen and (max-width: 991px) {
+    .dropdownItem {
+      text-align: center !important;
+    }
+    .nav_text {
+      width: auto;
+      padding-top: 0px;
+    }
+    .drop {
+      width: auto;
+    }
+    .logo {
+      font-size: 35px !important;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .logo {
+      font-size: 25px !important;
+    }
+  }
+  
+  /* Add the following styles to your existing CSS */
+  
+  /* Container for the entire navbar */
+  .Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Styles for the logo */
+  .logoimg {
+    height: 60px !important;
+    margin-left: auto !important; /* Push the logo to the right */
+    margin-right: auto; /* Push the logo to the left */
+  }
+  
+  /* Styles for the navbar links */
+  .Navbar.Collapse {
+    display: flex !important;
+    justify-content: center !important;
+  }
+  
+  /* Media query for smaller screens */
+  @media screen and (max-width: 991px) {
+    .Container {
+      flex-direction: column !important; /* Stack items vertically on smaller screens */
+    }
+  
+    .logo {
+      margin-bottom: 10px !important; /* Add some space between the logo and the links */
+    }
+  }
+  
