@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import pethouse from "../../imag/pethouse.png";
 // import "./css/register.css";  // Import the CSS file
-import Header from "../../components/Header"
+import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 const Register = () => {
@@ -27,7 +27,6 @@ const Register = () => {
         email,
         password,
         phone,
-        role,
       });
       if (res.data.success) {
         toast.success(res.data.message);
@@ -45,15 +44,15 @@ const Register = () => {
     <>
       <Header />
       <div className="register row">
-      <div className="col-md-5">
-            {" "}
-            <img
-              src={pethouse}
-              className="img-fluid"
-              data-aos="fade"
-              data-aos-offset="100"
-            ></img>
-          </div>
+        <div className="col-md-5">
+          {" "}
+          <img
+            src={pethouse}
+            className="img-fluid"
+            data-aos="fade"
+            data-aos-offset="100"
+          ></img>
+        </div>
         <div className="col-md-5 p-4">
           <h1>Register</h1>
           <form onSubmit={handleSubmit}>
@@ -111,9 +110,9 @@ const Register = () => {
               Submit
             </button>
 
-            <button 
-              type="button" 
-              className="btn-more" 
+            <button
+              type="button"
+              className="btn-more"
               onClick={() => navigate("/login")}
             >
               Already have an account?
@@ -123,7 +122,6 @@ const Register = () => {
       </div>
       <Footer />
     </>
-
   );
 };
 

@@ -1,5 +1,5 @@
-import caro1 from "../../imag/img.jpg";
-import caro2 from "../../imag/Frame 1.jpg";
+import caro1 from "../../imag/img4.jpg";
+import caro2 from "../../imag/img4.png";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
@@ -42,10 +42,11 @@ const Header = () => {
                           class="display-5 text-white mb-2  "
                           style={{ width: "100%" }}
                         >
-                          Looking for a pet partner the town?{" "}
+                          Surprise loved ones with personalized digital
+                          greetings.{" "}
                         </h3>
                         <p class="fs-6 fw-medium text-white mb-2 ">
-                          Get a friendly neighbourhood pet.
+                          Surprise with personalized greetings.{" "}
                         </p>
                         <Link
                           to="/about"
@@ -74,11 +75,10 @@ const Header = () => {
                           class="display-5 text-white mb-2  "
                           style={{ width: "100%" }}
                         >
-                          Discover joy, love, and companionship with our
-                          adorable adoptable pets{" "}
+                          Create and share unforgettable moments with SnapGreet.{" "}
                         </h3>
                         <p class="fs-6 fw-medium text-white mb-2 ">
-                          Find Your Fur-ever Friend at PetPals.
+                          Create unforgettable moments.{" "}
                         </p>
                         <Link
                           to="/about"

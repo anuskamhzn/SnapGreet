@@ -126,7 +126,7 @@ const Header = () => {
                 }}
                 aria-current="page"
               >
-                Find a Templates
+                Find a Template
               </NavLink>
             </p>{" "}
             <p className="nav-item p-2 pt-3 px-4">

@@ -129,9 +129,9 @@ le.css */
   background-color: rgb(28, 26, 26) !important;
 }
 
-.swiper img {
+/* .swiper img {
   filter: brightness(70%);
-}
+} */
 @media (max-width: 767px) {
   .owl-carousel-item img {
     height: 600px !important;
@@ -182,7 +182,7 @@ le.css */
 }
 
 .btn-purple {
-  background-color: #4e2d69 !important;
+  background-color: #3f2644;
 }
 .btn-outline-more {
   color: black;
@@ -351,4 +351,71 @@ le.css */
   text-decoration: none;
   background-color: #4e2d69 !important;
   border-radius: 2rem;
+}
+.real {
+  padding-bottom: 2rem  ;
+}
+.waves {
+  position: relative;
+  width: 390px; /* Adjust this value to the desired size of the circular area */
+  height: 390px; /* Adjust this value to the desired size of the circular area */
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-color: #6d6b6b;
+  border-style: solid;
+  background-image: linear-gradient(
+    210deg,
+    rgb(56, 164, 235),
+    rgb(227, 179, 48)
+  );
+}
+@media only screen and (max-width: 991px) {
+  .waves {
+    width: 250px; /* Adjust this value to the desired size of the circular area */
+    height: 250px;
+  }
+}
+
+.waves .wave {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 35%;
+  width: 100%;
+  background: url(../imag/wave.png);
+  background-size: 50rem 10rem;
+  animation: waves 3s linear infinite;
+  background-repeat: repeat-x;
+}
+
+.waves .wave2 {
+  animation-direction: reverse;
+  animation-duration: 2s;
+  opacity: 0.3;
+}
+
+.waves .wave3 {
+  animation-duration: 2s;
+  opacity: 0.5;
+}
+
+@keyframes waves {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 50rem;
+  }
+}
+
+/* .float {
+  animation: updown 6s linear infinite;
+} */
+.float {
+  bottom: 2%;
+  position: relative;
+  width: 70%;
 }
