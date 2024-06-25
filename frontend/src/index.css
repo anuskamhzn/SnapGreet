@@ -24,7 +24,7 @@ body {
     "Lucida Sans", Arial, sans-serif;
   font-size: 17px;
   line-height: 26px;
-  background-color: #4e2d69;
+  background-color: #3f2644;
   /* text-transform: uppercase; */
   border-radius: 3rem; /* Set border radius for all corners */
   border-top-left-radius: 0; /* Set border radius for top left corner to 0 */
@@ -424,7 +424,6 @@ li {
   color: black;
 }
 
-
 /* Adoption form */
 .popup-form {
   position: fixed;
@@ -446,5 +445,3 @@ li {
   width: 80%;
   max-width: 500px;
 }
-
-

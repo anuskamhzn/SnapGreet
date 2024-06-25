@@ -16,14 +16,13 @@
   font-weight: bold;
   text-align: left;
   width: 400px;
-  margin-bottom: 45px;
 }
 .content {
   font-size: 15px;
   font-family: "Poppins";
   text-align: left;
   color: #6d7783;
-  width: 80%;
+  width: 100%;
   text-align: justify;
   /* margin-bottom: 40px; */
 }

@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./Real.module.css";
-import improveImg from "../../../imag/Real.png";
+import improveImg from "../../../imag/snaplogo.png";
 import { Link } from "react-router-dom";
 
 const Real = () => {
   return (
-    <div className="mb-5 mt-5 overflow-hidden  real ">
+    <div className=" mt-5 overflow-hidden container real ">
       <div className="row g-0">
         <div className={`col-md-6 ${styles.imgDiv}`}>
           <img
@@ -23,34 +23,32 @@ const Real = () => {
               data-aos-offset="150"
               className={styles.heading}
             >
-              Find Your Perfect Pet Companion
+              Craft memorable digital greetings{" "}
             </p>
             <p
               data-aos="slide-left"
               data-aos-offset="150"
               className={styles.subHeading}
             >
-              Great Pet Adoption Experiences{" "}
+              What SnapGreet actually is?{" "}
             </p>
             <p
               data-aos="zoom-in"
               data-aos-offset="150"
               className={styles.content}
             >
-              At PetPals, we've curated the perfect environment for connecting
-              loving families with furry companions in need of homes. Our
-              mission is to make the adoption process seamless and joyful for
-              both pets and their new owners. With a warm atmosphere and expert
-              guidance, we ensure that every adoption is a match made in heaven.
-              Whether you're seeking a playful puppy, a cuddly kitten, or a
-              loyal senior pet, PetPals is here to make your adoption journey
-              unforgettable. Come meet your new best friend today!
+              Welcome to SnapGreet, your go-to platform for creating
+              personalized greeting websites. Perfect for birthdays,
+              anniversaries, and more, SnapGreet lets you craft unique,
+              heartfelt surprises that make your loved ones feel special. Simply
+              enter your details, choose a template, and your custom greeting
+              site is ready to share. You can also generate an image preview for
+              easy social media sharing. Optimized for mobile users, SnapGreet
+              ensures a seamless experience. Celebrate and connect with
+              SnapGreet, turning every occasion into a memorable digital
+              celebration.
             </p>
-            <div data-aos="zoom-in" style={{ textAlign: "left" }}>
-              <button className={`btn custom_btn ${styles.btn}`}>
-                <Link to="/contact">LET&apos;S TALK</Link>
-              </button>
-            </div>
+            <div data-aos="zoom-in" style={{ textAlign: "left" }}></div>
           </div>
         </div>
       </div>
