@@ -27,7 +27,6 @@ const Register = () => {
         email,
         password,
         phone,
-        role,
       });
       if (res.data.success) {
         toast.success(res.data.message);

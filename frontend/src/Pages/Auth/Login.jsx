@@ -4,7 +4,7 @@ import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
 import pethouse from "../../imag/petpalslogo (2).png";
-import Header from "../../components/Header"
+import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 const Login = () => {
@@ -28,27 +28,36 @@ const Login = () => {
         localStorage.setItem("auth", JSON.stringify(res.data)); // Update localStorage
         navigate(location.state || "/");
       } else {
-        toast.error(res.data.message);
+        // Handle specific error messages
+        if (res.data.message === "Invalid email or password") {
+          toast.error("Please provide both email and password.");
+        } else if (res.data.message === "Email is not registerd") {
+          toast.error("Email is not registered. Please sign up.");
+        } else if (res.data.message === "Invalid Password") {
+          toast.error("Incorrect password. Please try again.");
+        } else {
+          toast.error("Something went wrong. Please try again later.");
+        }
       }
     } catch (error) {
       console.error(error);
-      toast.error("Something went wrong");
+      toast.error("Something went wrong. Please try again later.");
     }
   };
 
   return (
     <>
-    <Header/>
+      <Header />
       <div className="container">
         <div className="register row">
           <div className="col-md-5">
-            {" "}
             <img
               src={pethouse}
               className="img-fluid"
               data-aos="fade"
               data-aos-offset="100"
-            ></img>
+              alt="Pet House"
+            />
           </div>
           <div className="col-md-5">
             <h1>Welcome</h1>
@@ -76,25 +85,23 @@ const Login = () => {
                   required
                 />
               </div>
-
               <div className="mb-3" data-aos="slide-up" data-aos-offset="100">
-                <NavLink to="/forgot-password" className="btn ">
+                <NavLink to="/forgot-password" className="btn">
                   Forgot Password?
                 </NavLink>
               </div>
               <div className="d-flex">
                 <button
                   type="submit"
-                  className="btn-more px-5 py-3 btn-login mx-1 "
+                  className="btn-more px-5 py-3 btn-login mx-1"
                   data-aos="slide-up"
                   data-aos-offset="100"
                 >
                   Login
                 </button>
-
                 <NavLink
                   to="/register"
-                  className=" btn-outline-more px-5 py-3 btn-login mx-1"
+                  className="btn-outline-more px-5 py-3 btn-login mx-1"
                   data-aos="slide-up"
                   data-aos-offset="100"
                 >
@@ -105,8 +112,8 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Footer/>
-      </>
+      <Footer />
+    </>
   );
 };
 
