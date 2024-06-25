@@ -15,10 +15,14 @@ const HomePage = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
-    const shouldShowPopup = sessionStorage.getItem('showPopup');
-    if (location.state && location.state.showPopup && shouldShowPopup === 'true') {
+    const shouldShowPopup = sessionStorage.getItem("showPopup");
+    if (
+      location.state &&
+      location.state.showPopup &&
+      shouldShowPopup === "true"
+    ) {
       setShowPopup(true);
-      sessionStorage.removeItem('showPopup');
+      sessionStorage.removeItem("showPopup");
     }
   }, [location.state]);
 
@@ -31,8 +35,11 @@ const HomePage = () => {
       <Header />
       <Hero />
       <Real />
-      <div className="text-center pt-5 pb-5 pl-5 container" data-aos="slide-up" data-aos-offset="100">
-        <ChoosingUs />
+      <div
+        className="text-center  pb-5 pl-5 container"
+        data-aos="slide-up"
+        data-aos-offset="100"
+      >
         <Straight />
       </div>
 
