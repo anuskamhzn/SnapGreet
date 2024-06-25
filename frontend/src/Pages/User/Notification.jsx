@@ -39,19 +39,23 @@ const Notification = () => {
                     <div className="col-md-3">
                         <UserMenu />
                     </div>
-                    <div className="col-md-9 pt-4">
+                    <div className="col-md-9 pt-4 admin-container">
                         <h1>Notifications</h1>
-                        {loading && <p>Loading...</p>}
-                        {error && <p>{error}</p>}
-                        {!loading && !error && notifications.length === 0 && <p>No notifications found.</p>}
+                        {loading && <p className="loading">Loading...</p>}
+                        {error && <p className="error">{error}</p>}
+                        {!loading && !error && notifications.length === 0 && <p className="no-notifications">No notifications found.</p>}
                         {!loading && !error && notifications.length > 0 && (
                             <ul className="list-group">
                                 {notifications.map(notification => (
-                                    <li key={notification._id} className="list-group-item">
-                                        {notification.message}
-                                        <a 
-                                            href={`http://localhost:3000/${notification.templateType}/${notification.birthdayModelId}`} 
-                                            className="btn btn-info float-end"
+                                    <li key={notification._id} className="notification">
+                                        <div className="content">
+                                            <div className="header">{notification.message}</div>
+                                            {/* <div className="meta">Notification details</div>
+                                            <div className="description">Additional information about the notification.</div> */}
+                                        </div>
+                                        <a
+                                            href={`http://localhost:3000/${notification.templateType}/${notification.birthdayModelId}`}
+                                            className="approve-button"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >

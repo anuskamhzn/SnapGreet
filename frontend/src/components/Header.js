@@ -157,9 +157,9 @@ const Header = () => {
                       aria-expanded="false"
                     >
                       <span className="username ">
-                        {auth?.user?.username.length > 5
-                          ? auth?.user?.username.slice(0, 5) + ".."
-                          : auth?.user?.username}
+                        {auth?.user?.name.length > 5
+                          ? auth?.user?.name.slice(0, 5) + ".."
+                          : auth?.user?.name}
                       </span>
                     </NavLink>
                     <ul className="dropdown-menu loginbtn">

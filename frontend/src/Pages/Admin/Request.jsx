@@ -33,9 +33,21 @@ const Request = () => {
         }
     };
 
-    // if (loading) {
-    //     return <div>Loading...</div>;
-    // }
+    const arrayBufferToBase64 = (buffer) => {
+        let binary = '';
+        const bytes = new Uint8Array(buffer);
+        const len = bytes.byteLength;
+        for (let i = 0; i < len; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        return window.btoa(binary);
+    };
+
+    const renderImage = (photo) => {
+        if (!photo || !photo.data) return null;
+        const base64String = arrayBufferToBase64(photo.data.data);
+        return `data:${photo.contentType};base64,${base64String}`;
+    };
 
     return (
         <>
@@ -48,23 +60,32 @@ const Request = () => {
                     <div className="col-md-9 pt-4">
                         <div className="admin-container">
                             <h2>Pending Birthday Wishes</h2>
-                            {pendingWishes.length === 0 ? (
-                                <div>No pending wishes</div>
+                            {loading ? (
+                                <div>Loading...</div>
+                            ) : pendingWishes.length === 0 ? (
+                                <div className="notification">No pending wishes</div>
                             ) : (
-                                <div className="cards">
+                                <div className="list-group">
                                     {pendingWishes.map((wish) => (
-                                        <div className="card" key={wish._id}>
+                                        <div className="list-group-item notification" key={wish._id}>
                                             <div className="content">
-                                                <div className="header">{wish.name}</div>
-                                                <div className="meta">{wish.nickname}</div>
-                                                <div className="description">
-                                                    <p>{wish.description1}</p>
-                                                    <p>{wish.description2}</p>
+                                                {wish.postedBy.photo && (
+                                                    <img
+                                                        src={renderImage(wish.postedBy.photo)}
+                                                        alt="User Photo"
+                                                        className="user-photo"
+                                                    />
+                                                )}
+                                                <div className="user-details">
+                                                    <div className="header">
+                                                        {wish.postedBy.name} : {wish.postedBy.phone}
+                                                    </div>
+                                                    <div className="meta">{wish.templateType}</div>
                                                 </div>
                                             </div>
-                                            <div className="extra-content">
+                                            <div>
                                                 <button
-                                                    className="button"
+                                                    className="approve-button"
                                                     onClick={() => approveWish(wish._id)}
                                                 >
                                                     Approve
@@ -80,7 +101,6 @@ const Request = () => {
             </div>
             <Footer />
         </>
-
     );
 };
 

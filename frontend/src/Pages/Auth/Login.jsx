@@ -26,7 +26,7 @@ const Login = () => {
           token: res.data.token,
         });
         localStorage.setItem("auth", JSON.stringify(res.data)); // Update localStorage
-        navigate(location.state || "/");
+        navigate(location.state || "/template");
       } else {
         // Handle specific error messages
         if (res.data.message === "Invalid email or password") {

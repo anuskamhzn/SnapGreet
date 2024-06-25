@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import "./css/admin.css";
+import "./css/users.css";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -31,7 +31,7 @@ const Users = () => {
 
   return (
     <>
-      <Header/>
+      <Header />
       <div className="container-fluid m-3 p-3 pt-4">
         <div className="row">
           <div className="col-md-3">
@@ -39,34 +39,29 @@ const Users = () => {
           </div>
           <div className="col-md-9 pt-4">
             <h1>All Users</h1>
-            <div className="admin-container">
-                {users.map((user) => (
-                  <div  key={user._id}>
-                    <div className="cards">
-                      <div className="card">
-                        <div className="content">
-                        <img
-                          src={`/api/v1/auth/user-photo/${user?._id}`}
-                          className="pet-image img-fluid"
-                          alt={user?.name}
-                          style={{ height: "200px", width: "100%", objectFit: "cover" }}
-                        />
-                        <div className="card-body">
-                          <h5 className="card-title">
-                            <Link to={`/user-info/${user._id}`} className="link">{user.name}</Link>
-                            <h6>{user.address}</h6>
-                          </h5>
-                        </div>
-                      </div>
+            <div className="cards">
+              {users.map((user) => (
+                <div key={user._id} className="card">
+                  <Link to={`/user-info/${user._id}`} className="link">
+                    <img
+                      src={`/api/v1/auth/user-photo/${user?._id}`}
+                      className="pet-image img-fluid"
+                      alt={user?.name}
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">
+                        {user.name}
+                      </h5>
+                      <h6>{user.address}</h6>
                     </div>
-                  </div>
-                  </div>
-                ))}
-              </div>
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      <Footer/>
+      </div>
+      <Footer />
     </>
   );
 };

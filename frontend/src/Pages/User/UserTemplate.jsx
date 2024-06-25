@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../context/auth';
+import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import UserMenu from '../../components/Menu/UserMenu';
+import './css/UserTemp.css'; // Import CSS file for custom styles
 
 const UserTemp = () => {
     const [error, setError] = useState(null);
     const [templates, setTemplates] = useState([]);
     const [auth] = useAuth();
+    const navigate = useNavigate();
+
+    const handleUseTemplate = (templateType) => {
+        navigate(`/templateform/${templateType}`);
+    };
 
     useEffect(() => {
         if (!auth.user) {
@@ -39,6 +46,14 @@ const UserTemp = () => {
         return <p>Error: {error}</p>;
     }
 
+    const getImageSrc = (templateType) => {
+        return `/template-previews/${templateType}.jpg`;
+    };
+
+    const getFallbackImageSrc = (templateType) => {
+        return `/template-previews/${templateType}.png`;
+    };
+
     return (
         <>
             <Header />
@@ -49,15 +64,30 @@ const UserTemp = () => {
                     </div>
                     <div className="col-md-9 pt-4">
                         <h1>All Used Templates</h1>
-                        {templates.length === 0 ? (
-                            <p>No templates found.</p>
-                        ) : (
-                            <ul>
-                                {templates.map((template, index) => (
-                                    <li key={index}>{template.templateType}</li>
-                                ))}
-                            </ul>
-                        )}
+                        <div className="card-container">
+                            {templates.length === 0 ? (
+                                <p>No templates found.</p>
+                            ) : (
+                                templates.map((template, index) => (
+                                    <div key={index} className="card">
+                                        <img
+                                            src={getImageSrc(template.templateType)}
+                                            alt={`${template.templateType} preview`}
+                                            className="card-img-top template-image"
+                                            onError={(e) => {
+                                                e.target.onerror = null; // Prevent infinite loop if fallback also fails
+                                                e.target.src = getFallbackImageSrc(template.templateType);
+                                            }}
+                                        />
+                                        <div className="card-body">
+                                            <h5 className="card-title">{template.templateType}</h5>
+                                            <p className="card-text">{template.description1}</p>
+                                            <button onClick={() => handleUseTemplate(template.templateType)} className="btn btn-primary">Use Template</button>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

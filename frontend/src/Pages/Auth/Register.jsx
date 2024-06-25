@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import pethouse from "../../imag/pethouse.png";
-// import "./css/register.css";  // Import the CSS file
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
@@ -12,20 +11,34 @@ const Register = () => {
   const queryParams = new URLSearchParams(search);
   const role = queryParams.get("role");
   const [name, setName] = useState("");
-  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
   const [phone, setPhone] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Check if password and confirmPass are the same
+    if (password !== confirmPass) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
     try {
       const res = await axios.post(`/api/v1/auth/register`, {
         name,
-        username,
         email,
         password,
+        confirmPass,
         phone,
       });
       if (res.data.success) {
@@ -45,13 +58,13 @@ const Register = () => {
       <Header />
       <div className="register row">
         <div className="col-md-5">
-          {" "}
           <img
             src={pethouse}
             className="img-fluid"
             data-aos="fade"
             data-aos-offset="100"
-          ></img>
+            alt="Pet House"
+          />
         </div>
         <div className="col-md-5 p-4">
           <h1>Register</h1>
@@ -63,16 +76,6 @@ const Register = () => {
                 onChange={(e) => setName(e.target.value)}
                 className="form-control"
                 placeholder="Enter Name"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUserName(e.target.value)}
-                className="form-control"
-                placeholder="Enter User Name"
                 required
               />
             </div>
@@ -93,6 +96,16 @@ const Register = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 className="form-control"
                 placeholder="Enter Password"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="password"
+                value={confirmPass}
+                onChange={(e) => setConfirmPass(e.target.value)}
+                className="form-control"
+                placeholder="Confirm Password"
                 required
               />
             </div>

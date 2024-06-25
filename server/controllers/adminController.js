@@ -4,7 +4,12 @@ import Notification from "../models/notificationModel.js";
 // Get All Pending Birthday Wishes
 export const getPendingWishesController = async (req, res) => {
     try {
-        const pendingWishes = await birthdayModel.find({ status: 'pending' }).sort({ createdAt: -1 });
+        const pendingWishes = await birthdayModel.find({ status: 'pending' })
+        .sort({ createdAt: -1 })
+        .populate({
+            path: 'postedBy',
+            select: 'name phone photo'
+        });
         res.status(200).send({
             success: true,
             message: "Pending birthday wishes retrieved successfully",

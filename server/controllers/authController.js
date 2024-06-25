@@ -7,28 +7,38 @@ import mongoose from "mongoose";
 
 export const registerController = async (req, res) => {
   try {
-    const { name, username, email, password, phone } = req.body;
+    const { name, email, password, confirmPass, phone } = req.body;
     const role = req.body.role; // Extract role from the request body
+
     // Validations
-    if (!name || !username || !email || !password || !phone ) {
+    if (!name || !email || !password || !confirmPass || !phone) {
       return res.status(400).json({ message: "All fields are required" });
     }
+
+    // Check if password and confirmPass are the same
+    if (password !== confirmPass) {
+      return res.status(400).json({ message: "Passwords do not match" });
+    }
+
     // Check if the user already exists
     const existingUser = await userModel.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists, please login instead" });
     }
+
     // Hash the password
     const hashedPassword = await hashPassword(password);
+
     // Register the user
     const user = await new userModel({
       name,
-      username,
       email,
       phone,
       password: hashedPassword,
+      confirmPass: hashedPassword,
       role, // include the role as it's automatically filled by middleware
     }).save();
+
     res.status(201).json({
       success: true,
       message: "User registered successfully",
@@ -283,7 +293,9 @@ export const getTemplateController = async (req, res) => {
     }
 
     // Fetch the templateType of documents posted by the specific user
-    const templates = await birthdayModel.find({ postedBy: userID }).select('templateType');
+    const templates = await birthdayModel
+    .find({ postedBy: userID })
+    .select('templateType description1');
 
     // Even if no templates are found, return an empty array with a 200 status
     res.status(200).send(templates);

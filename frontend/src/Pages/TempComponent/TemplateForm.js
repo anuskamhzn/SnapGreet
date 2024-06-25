@@ -22,6 +22,13 @@ const TemplateForm = ({ onNewTemplate }) => {
 
   const handlePhotoUpload = (e) => {
     const files = Array.from(e.target.files);
+
+    // Check if exactly 3 photos are selected
+    if (files.length !== 3) {
+      toast.error("Please select exactly 3 photos.");
+      return;
+    }
+
     setPhotos(files);
 
     // Create preview URLs
