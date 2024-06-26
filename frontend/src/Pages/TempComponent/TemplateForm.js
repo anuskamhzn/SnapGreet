@@ -59,7 +59,7 @@ const TemplateForm = ({ onNewTemplate }) => {
     });
 
     try {
-      const response = await axios.post("/api/v1/wish/template", formData, {
+      const response = await axios.post(`${process.env.REACT_APP_API}/api/v1/wish/template`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -16,19 +16,17 @@ const Notification = () => {
       return;
     }
 
-    const fetchNotifications = async () => {
-      try {
-        const response = await axios.get(
-          `/api/v1/notifications/${auth.user._id}`
-        );
-        setNotifications(response.data.data); // Update state with fetched data
-      } catch (error) {
-        console.error("Error fetching notifications:", error);
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+        const fetchNotifications = async () => {
+            try {
+                const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/notifications/${auth.user._id}`);
+                setNotifications(response.data.data); // Update state with fetched data
+            } catch (error) {
+                console.error("Error fetching notifications:", error);
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
 
     fetchNotifications(); // Fetch data on component mount
   }, [auth.user]);

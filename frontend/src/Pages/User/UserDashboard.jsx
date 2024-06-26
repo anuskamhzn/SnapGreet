@@ -20,7 +20,7 @@ const UserDashboard = () => {
               <div className="row">
                 <div className="col-md-5 d-flex align-items-center justify-content-center">
                   <img
-                    src={`/api/v1/auth/user-photo/${auth?.user?._id}`}
+                    src={`${process.env.REACT_APP_API}/api/v1/auth/user-photo/${auth?.user?._id}`}
                     className="img-fluid"
                     alt={auth?.user?.name}
                     style={{ width: "200px" }} // Adjust the height and width as needed

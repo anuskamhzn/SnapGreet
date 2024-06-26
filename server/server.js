@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import connectDB from "./config/db.js";
 import cors from "cors";
-import path from "path";
+// import path from "path";
 // import { fileURLToPath } from 'url';
 import authRoutes from "./routes/authRoutes.js";
 import birthdayRoute from "./routes/birthdayRoute.js";

@@ -14,7 +14,7 @@ const Userinfo = () => {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const response = await axios.get(`/api/v1/auth/user-info/${userId}`);
+        const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/user-info/${userId}`);
         setUserInfo(response.data.user);
       } catch (error) {
         setError(error.response.data.message);

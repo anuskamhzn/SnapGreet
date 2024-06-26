@@ -10,7 +10,7 @@ export default function UserRoutes() {
     useEffect(() => {
         const authCheck = async () => {
             try {
-                const res = await axios.get('/api/v1/auth/user-auth');
+                const res = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/user-auth`);
                 setOk(res.data.ok);
             } catch (error) {
                 console.error("Error occurred while checking authentication:", error);

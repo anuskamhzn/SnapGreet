@@ -11,7 +11,7 @@ const TemplateView = () => {
     const fetchTemplate = async () => {
       console.log('Fetching template with Type:', type, 'and ID:', id);
       try {
-        const response = await axios.get(`/api/v1/wish/template/${type}/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/wish/template/${type}/${id}`);
         setTemplate(response.data);
       } catch (error) {
         console.error('Error fetching template:', error);
