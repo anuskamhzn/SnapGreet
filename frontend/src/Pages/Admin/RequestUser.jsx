@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 
-const Userinfo = () => {
+const Requestinfo = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
   const [userInfo, setUserInfo] = useState(null);
@@ -24,18 +24,6 @@ const Userinfo = () => {
     fetchUserInfo();
   }, [userId]);
 
-  const handleDelete = async () => {
-    try {
-      const confirmed = window.confirm("Are you sure you want to delete this user?");
-      if (!confirmed) return;
-      await axios.delete(`/api/v1/auth/delete-user/${userId}`);
-      toast.success("User Deleted Successfully");
-      navigate("/dashboard/admin/users");
-    } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong");
-    }
-  };
 
   return (
     <>
@@ -58,10 +46,7 @@ const Userinfo = () => {
                   <p className="card-text">Email: {userInfo.email}</p>
                   <p className="card-text">Phone: {userInfo.phone}</p>
                 </div>
-                {/* Uncomment the Edit button if you have the edit functionality implemented */}
-                {/* <button onClick={() => navigate(`/dashboard/admin/edituser/${userId}`)} className="btn btn-primary mb-2">Edit</button> */}
-                <button onClick={handleDelete} className="btn btn-danger mb-2">Delete</button>
-                <button className="btn btn-info mb-2" style={{ color: "white" }} onClick={() => navigate("/dashboard/admin/users")}>Go Back</button>
+                <button className="btn btn-info mb-2" style={{ color: "white" }} onClick={() => navigate("/dashboard/admin/request")}>Go Back</button>
               </div>
             </div>
           </div>
@@ -72,4 +57,4 @@ const Userinfo = () => {
   );
 };
 
-export default Userinfo;
+export default Requestinfo;

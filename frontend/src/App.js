@@ -22,6 +22,7 @@ import UserRequest from './Pages/User/Request';
 import Notification from './Pages/User/Notification';
 import UserTemp from './Pages/User/UserTemplate';
 import Userinfo from './Pages/Admin/UserInfo';
+import Requestinfo from './Pages/Admin/RequestUser';
 import TemplateDetail from './Pages/TempComponent/TemplateDetail';
 import TemplateForm from './Pages/TempComponent/TemplateForm';
 import TemplateView from './Pages/TempComponent/TemplateView';
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/template" element={<FindTemplate />} />
         <Route path="/*" element={<Pagenotfound />} />
         <Route path="/user-info/:userId" element={<Userinfo />} />
+        <Route path="/request-info/:userId" element={<Requestinfo />} />
         <Route path="/templatedetail/:templateType" element={<TemplateDetail />} />
         <Route path="/templateform/:templateType" element={<TemplateForm onNewTemplate={handleNewTemplate} />} />
         <Route path="/:type/:id" element= {<TemplateView />}/>

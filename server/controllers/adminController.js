@@ -24,37 +24,6 @@ export const getPendingWishesController = async (req, res) => {
     }
 };
 
-//Approve Birthday Wish
-/*export const approveWishController = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const updatedWish = await birthdayModel.findByIdAndUpdate(
-            id,
-            { status: 'approved' },
-            { new: true }
-        );
-
-        if (!updatedWish) {
-            return res.status(404).send({
-                success: false,
-                message: "Birthday wish not found",
-            });
-        }
-
-        res.status(200).send({
-            success: true,
-            message: "Birthday wish approved successfully",
-            updatedWish,
-        });
-    } catch (error) {
-        console.error("Error approving birthday wish:", error);
-        res.status(500).send({
-            success: false,
-            message: "Internal server error",
-        });
-    }
-};*/
-
 
 // Approve Birthday Wish
 export const approveWishController = async (req, res) => {
