@@ -5,6 +5,7 @@ import './css/admin.css';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import AdminMenu from '../../components/Menu/AdminMenu';
+import { Link } from 'react-router-dom';
 
 const Request = () => {
     const [pendingWishes, setPendingWishes] = useState([]);
@@ -56,17 +57,17 @@ const Request = () => {
 
     useEffect(() => {
         const fetchUserInfo = async () => {
-          try {
-            const response = await axios.get(`/api/v1/auth/user-info/${userId}`);
-            setUserInfo(response.data.user);
-          } catch (error) {
-            setError(error.response.data.message);
-          }
+            try {
+                const response = await axios.get(`/api/v1/auth/user-info/${userId}`);
+                setUserInfo(response.data.user);
+            } catch (error) {
+                setError(error.response.data.message);
+            }
         };
-    
+
         fetchUserInfo();
-      }, [userId]);
-      
+    }, [userId]);
+
     return (
         <>
             <Header />
@@ -87,17 +88,19 @@ const Request = () => {
                                     {pendingWishes.map((wish) => (
                                         <div className="list-group-item notification" key={wish._id}>
                                             <div className="content">
-                                                {wish.postedBy.photo && (
-                                                    <img
-                                                        src={renderImage(wish.postedBy.photo)}
-                                                        alt="User Photo"
-                                                        className="user-photo"
-                                                    />
-                                                )}
+                                                <Link to={`/request-info/${wish.postedBy._id}`} className="link">
+                                                    {wish.postedBy.photo && (
+                                                        <img
+                                                            src={renderImage(wish.postedBy.photo)}
+                                                            alt="User Photo"
+                                                            className="user-photo"
+                                                        />
+                                                    )}
+                                                </Link>
                                                 <div className="user-details">
                                                     <div className="header">
                                                         {wish.postedBy.name} : {wish.postedBy.phone}
-                                                        
+
                                                     </div>
                                                     <div className="meta">{wish.templateType} : {wish.name}</div>
                                                 </div>

@@ -46,7 +46,7 @@ router.put('/profile', formidable(),requireSignIn, updateProfileController);
 router.get("/get-users", userController);
 
 //get user info
-router.get("/user-info/:userId",getUserByIdController);
+router.get("/user-info/:id",getUserByIdController);
 
 //get photo
 router.get("/user-photo/:userId", userPhotoController);

@@ -251,9 +251,9 @@ export const userPhotoController = async (req, res) => {
 // Get user by ID
 export const getUserByIdController = async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { id } = req.params;
     // Find user by ID
-    const user = await userModel.findById(userId);
+    const user = await userModel.findById(id);
     if (!user) {
       return res.status(404).json({ success: false, message: "User not found" });
     }
@@ -289,12 +289,13 @@ export const getTemplateController = async (req, res) => {
 
     // Validate the userID
     if (!mongoose.Types.ObjectId.isValid(userID)) {
+      console.error(`Invalid user ID: ${userID}`);
       return res.status(400).send({ error: 'Invalid user ID' });
     }
 
     // Fetch the templateType and other relevant fields of documents posted by the specific user
     const templates = await birthdayModel
-      .find({ postedBy: userID , status: 'approved'})
+      .find({ postedBy: userID, status: 'approved' })
       .select('templateType name _id'); // Use _id to match MongoDB's default ID field
 
     // Even if no templates are found, return an empty array with a 200 status
