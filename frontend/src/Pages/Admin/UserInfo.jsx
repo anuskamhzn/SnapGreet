@@ -28,7 +28,7 @@ const Userinfo = () => {
     try {
       const confirmed = window.confirm("Are you sure you want to delete this user?");
       if (!confirmed) return;
-      await axios.delete(`/api/v1/auth/delete-user/${userId}`);
+      await axios.delete(`${process.env.REACT_APP_API}/api/v1/auth/delete-user/${userId}`);
       toast.success("User Deleted Successfully");
       navigate("/dashboard/admin/users");
     } catch (error) {
@@ -49,7 +49,7 @@ const Userinfo = () => {
               <div className="card m-2" style={{ width: "18rem" }}>
                 <div className="card-body">
                   <img
-                    src={`/api/v1/auth/user-photo/${userInfo._id}`}
+                    src={`${process.env.REACT_APP_API}/api/v1/auth/user-photo/${userInfo._id}`}
                     className="card-img-top"
                     alt={userInfo.name}
                     style={{ height: "200px", width: "200px" }}

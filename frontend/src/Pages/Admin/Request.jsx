@@ -32,7 +32,7 @@ const Request = () => {
 
     const approveWish = async (id) => {
         try {
-            await axios.patch(`/api/v1/admin/approve/${id}`);
+            await axios.patch(`${process.env.REACT_APP_API}/api/v1/admin/approve/${id}`);
             fetchPendingWishes();
         } catch (error) {
             console.error("Error approving wish:", error);
@@ -58,7 +58,7 @@ const Request = () => {
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
-                const response = await axios.get(`/api/v1/auth/user-info/${userId}`);
+                const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/user-info/${userId}`);
                 setUserInfo(response.data.user);
             } catch (error) {
                 setError(error.response.data.message);

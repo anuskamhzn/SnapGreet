@@ -56,7 +56,7 @@ const Notification = () => {
                                             <div className="description">Additional information about the notification.</div> */}
                     </div>
                     <a
-                      href={`http://localhost:3000/${notification.templateType}/${notification.birthdayModelId}`}
+                      href={`https://tranquil-pixie-5382c9.netlify.app/${notification.templateType}/${notification.birthdayModelId}`}
                       className="approve-button"
                       target="_blank"
                       rel="noopener noreferrer"

@@ -44,7 +44,7 @@ const Users = () => {
                 <div key={user._id} className="card">
                   <Link to={`/user-info/${user._id}`} className="link">
                     <img
-                      src={`/api/v1/auth/user-photo/${user?._id}`}
+                      src={`${process.env.REACT_APP_API}/api/v1/auth/user-photo/${user?._id}`}
                       className="pet-image img-fluid"
                       alt={user?.name}
                     />
