@@ -38,7 +38,7 @@ const UpdateProfile = () => {
             formData.append("phone", phone);
             formData.append("photo", photo); // Append the selected photo to the form data
 
-            const { data } = await axios.put("/api/v1/auth/profile", formData);
+            const { data } = await axios.put(`${process.env.REACT_APP_API}/api/v1/auth/profile`, formData);
 
             if (data?.errro) {
                 toast.error(data?.error);

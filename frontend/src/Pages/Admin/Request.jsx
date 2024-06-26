@@ -21,7 +21,7 @@ const Request = () => {
 
     const fetchPendingWishes = async () => {
         try {
-            const response = await axios.get('/api/v1/admin/pending-wishes');
+            const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/admin/pending-wishes`);
             setPendingWishes(response.data.pendingWishes);
             setLoading(false);
         } catch (error) {

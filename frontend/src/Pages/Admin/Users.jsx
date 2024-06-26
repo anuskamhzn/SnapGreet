@@ -12,7 +12,7 @@ const Users = () => {
 
   const getAllUsers = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/get-users");
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/get-users`);
       if (data.success) {
         const filteredUsers = data.user.filter((user) => user.name !== "admin");
         setUsers(filteredUsers);
