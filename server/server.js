@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 
-// Serve static files
+// // Serve static files
 // app.use(express.static("../frontend/build"));
 // app.get("*", (req, res) => {
 //   res.sendFile(path.resolve(__dirname, "frontend","build", "index.html"));
