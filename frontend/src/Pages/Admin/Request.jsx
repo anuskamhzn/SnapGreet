@@ -97,8 +97,9 @@ const Request = () => {
                                                 <div className="user-details">
                                                     <div className="header">
                                                         {wish.postedBy.name} : {wish.postedBy.phone}
+                                                        
                                                     </div>
-                                                    <div className="meta">{wish.templateType}</div>
+                                                    <div className="meta">{wish.templateType} : {wish.name}</div>
                                                 </div>
                                             </div>
                                             <div>
