@@ -40,18 +40,11 @@ app.get("/", (req, res) => {
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 
-<<<<<<< HEAD
+// // Serve static files
 // app.use(express.static("../frontend/build"));
 // app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+//   res.sendFile(path.resolve(__dirname, "frontend","build", "index.html"));
 // });
-=======
-// Serve static files
-app.use(express.static("../frontend/build"));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "frontend","build", "index.html"));
-});
->>>>>>> 6614bea8e6f963c479f9a224c5932163252268d4
 
 // PORT
 const PORT = process.env.PORT || 5000;
