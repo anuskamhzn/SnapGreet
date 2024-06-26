@@ -74,7 +74,7 @@ const UserTemp = () => {
                             {!loading && templates.length > 0 && (
                                 templates.map((template, index) => (
                                     <div key={index} className="card">
-                                        <a href={`http://localhost:3000/${template.templateType}/${template._id}`}
+                                        <a href={`https://tranquil-pixie-5382c9.netlify.app/${template.templateType}/${template._id}`}
                                             target="_blank"
                                             rel="noopener noreferrer">
                                             <img

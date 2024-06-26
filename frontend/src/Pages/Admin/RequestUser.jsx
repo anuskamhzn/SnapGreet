@@ -37,7 +37,7 @@ const Requestinfo = () => {
               <div className="card m-2" style={{ width: "18rem" }}>
                 <div className="card-body">
                   <img
-                    src={`/api/v1/auth/user-photo/${userInfo._id}`}
+                    src={`${process.env.REACT_APP_API}/api/v1/auth/user-photo/${userInfo._id}`}
                     className="card-img-top"
                     alt={userInfo.name}
                     style={{ height: "200px", width: "200px" }}
