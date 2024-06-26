@@ -282,7 +282,7 @@ export const deleteUserController = async (req, res) => {
   }
 };
 
-//get all template used by user
+// Get all templates used by a user
 export const getTemplateController = async (req, res) => {
   try {
     const { userID } = req.params;
@@ -292,10 +292,10 @@ export const getTemplateController = async (req, res) => {
       return res.status(400).send({ error: 'Invalid user ID' });
     }
 
-    // Fetch the templateType of documents posted by the specific user
+    // Fetch the templateType and other relevant fields of documents posted by the specific user
     const templates = await birthdayModel
-    .find({ postedBy: userID })
-    .select('templateType description1');
+      .find({ postedBy: userID , status: 'approved'})
+      .select('templateType name _id'); // Use _id to match MongoDB's default ID field
 
     // Even if no templates are found, return an empty array with a 200 status
     res.status(200).send(templates);

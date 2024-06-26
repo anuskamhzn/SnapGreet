@@ -25,11 +25,10 @@ const UserRequest = () => {
 
         if (auth.user) {
             fetchRequests();
+        } else {
+            setLoading(false);
         }
     }, [auth.user]);
-
-    // if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
 
     return (
         <>
@@ -41,12 +40,15 @@ const UserRequest = () => {
                     </div>
                     <div className="col-md-9 pt-4">
                         <h2>Pending Requests</h2>
-                        {requests.length === 0 ? (
+                        {loading && <p className="loading">Loading...</p>}
+                        {error && <p className="error">Error: {error}</p>}
+                        {!loading && !error && requests.length === 0 && (
                             <p>No pending requests found.</p>
-                        ) : (
+                        )}
+                        {!loading && !error && requests.length > 0 && (
                             <div className="cards">
                                 {requests.map(request => (
-                                    <div className="card mb-3">
+                                    <div className="card mb-3" key={request._id}>
                                         <div className="card-body">
                                             <h3 className="card-title">{request.name}</h3>
                                             <p className="card-text">{request.description1}</p>

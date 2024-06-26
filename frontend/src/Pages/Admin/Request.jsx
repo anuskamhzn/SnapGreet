@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import './css/admin.css';
 import Header from '../../components/Header';
@@ -8,6 +9,10 @@ import AdminMenu from '../../components/Menu/AdminMenu';
 const Request = () => {
     const [pendingWishes, setPendingWishes] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
+    const [userInfo, setUserInfo] = useState(null);
+    const [error, setError] = useState(null);
+    const { userId } = useParams();
 
     useEffect(() => {
         fetchPendingWishes();
@@ -49,6 +54,19 @@ const Request = () => {
         return `data:${photo.contentType};base64,${base64String}`;
     };
 
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+          try {
+            const response = await axios.get(`/api/v1/auth/user-info/${userId}`);
+            setUserInfo(response.data.user);
+          } catch (error) {
+            setError(error.response.data.message);
+          }
+        };
+    
+        fetchUserInfo();
+      }, [userId]);
+      
     return (
         <>
             <Header />

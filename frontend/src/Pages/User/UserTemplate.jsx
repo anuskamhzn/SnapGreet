@@ -10,6 +10,7 @@ import './css/UserTemp.css'; // Import CSS file for custom styles
 const UserTemp = () => {
     const [error, setError] = useState(null);
     const [templates, setTemplates] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [auth] = useAuth();
     const navigate = useNavigate();
 
@@ -19,6 +20,7 @@ const UserTemp = () => {
 
     useEffect(() => {
         if (!auth.user) {
+            setLoading(false); // No need to keep loading if user is not authenticated
             return;
         }
 
@@ -32,6 +34,8 @@ const UserTemp = () => {
                 } else {
                     setError(error.message);
                 }
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -65,25 +69,29 @@ const UserTemp = () => {
                     <div className="col-md-9 pt-4">
                         <h1>All Used Templates</h1>
                         <div className="card-container">
-                            {templates.length === 0 ? (
-                                <p>No templates found.</p>
-                            ) : (
+                            {loading && <p className="loading">Loading...</p>}
+                            {!loading && templates.length === 0 && <p>No templates found.</p>}
+                            {!loading && templates.length > 0 && (
                                 templates.map((template, index) => (
                                     <div key={index} className="card">
-                                        <img
-                                            src={getImageSrc(template.templateType)}
-                                            alt={`${template.templateType} preview`}
-                                            className="card-img-top template-image"
-                                            onError={(e) => {
-                                                e.target.onerror = null; // Prevent infinite loop if fallback also fails
-                                                e.target.src = getFallbackImageSrc(template.templateType);
-                                            }}
-                                        />
-                                        <div className="card-body">
-                                            <h5 className="card-title">{template.templateType}</h5>
-                                            <p className="card-text">{template.description1}</p>
-                                            <button onClick={() => handleUseTemplate(template.templateType)} className="btn btn-primary">Use Template</button>
-                                        </div>
+                                        <a href={`http://localhost:3000/${template.templateType}/${template._id}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer">
+                                            <img
+                                                src={getImageSrc(template.templateType)}
+                                                alt={`${template.templateType} preview`}
+                                                className="card-img-top template-image"
+                                                onError={(e) => {
+                                                    e.target.onerror = null; // Prevent infinite loop if fallback also fails
+                                                    e.target.src = getFallbackImageSrc(template.templateType);
+                                                }}
+                                            />
+                                            </a>
+                                            <div className="card-body">
+                                                <h5 className="card-title">{template.templateType}</h5>
+                                                <p className="card-text">{template.name}</p>
+                                                <button onClick={() => handleUseTemplate(template.templateType)} className="btn btn-primary">Use Template</button>
+                                            </div>
                                     </div>
                                 ))
                             )}
