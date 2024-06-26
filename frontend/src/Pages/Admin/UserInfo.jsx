@@ -60,7 +60,6 @@ const Userinfo = () => {
                     style={{ height: "200px", width: "200px" }}
                   />
                   <h4 className="card-title">Name: {userInfo.name}</h4>
-                  <p className="card-text">User Name: {userInfo.username}</p>
                   <p className="card-text">Email: {userInfo.email}</p>
                   <p className="card-text">Phone: {userInfo.phone}</p>
                 </div>
