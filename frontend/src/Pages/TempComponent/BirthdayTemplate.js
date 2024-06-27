@@ -9,6 +9,7 @@ const templates = templateContext.keys().reduce((acc, key) => {
 }, {});
 
 const BirthdayTemplate = ({ name, nickname, description1, description2, templateType, photos }) => {
+  
   const TemplateComponent = templates[templateType];
 
   if (!TemplateComponent) {

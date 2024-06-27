@@ -252,14 +252,22 @@ export const userPhotoController = async (req, res) => {
 export const getUserByIdController = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log('Received user ID:', id); // Log the received ID for debugging
+
+    // Validate the ID
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ success: false, message: "Invalid user ID" });
+    }
+
     // Find user by ID
     const user = await userModel.findById(id);
     if (!user) {
       return res.status(404).json({ success: false, message: "User not found" });
     }
+    
     res.status(200).json({ success: true, message: "User found", user });
   } catch (error) {
-    console.error(error);
+    console.error('Error fetching user:', error); // Log the error
     res.status(500).json({ success: false, message: "Error in fetching user", error });
   }
 };
