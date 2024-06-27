@@ -252,7 +252,6 @@ export const userPhotoController = async (req, res) => {
 export const getUserByIdController = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log('Received user ID:', id); // Log the received ID for debugging
 
     // Validate the ID
     if (!mongoose.Types.ObjectId.isValid(id)) {
