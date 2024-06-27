@@ -20,7 +20,7 @@ const TemplateView = () => {
 
     if (type && id) {
       fetchTemplate();
-    }
+    }r
   }, [type, id]);
 
   if (!template) {

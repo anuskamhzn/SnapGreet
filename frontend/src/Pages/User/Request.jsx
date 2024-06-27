@@ -14,7 +14,7 @@ const UserRequest = () => {
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/wish/requests?status=pending&postedBy=${auth.user._id}`);
+                const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/wish/requests/${auth.user._id}`);
                 setRequests(response.data);
             } catch (error) {
                 setError(error.message);
