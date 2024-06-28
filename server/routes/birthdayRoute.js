@@ -23,6 +23,6 @@ router.post('/template', requireSignIn, formidable(formidableOptions), createUse
 router.get('/user', getUserController);
 router.get('/photo/:bid/:pid', birthdayPhotoController);
 router.get('/template/:type/:id', getTemplateController);
-router.get('/requests', requestController);
+router.get('/requests/:id', requestController);
 
 export default router;
