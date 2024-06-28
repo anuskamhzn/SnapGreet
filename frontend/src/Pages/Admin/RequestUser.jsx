@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import defaultProfilePhoto from "../../imag/user/profile.jpg";
 
 const Requestinfo = () => {
   const navigate = useNavigate();
@@ -36,11 +37,15 @@ const Requestinfo = () => {
             <div className="d-flex justify-content-center flex-wrap">
               <div className="card m-2" style={{ width: "18rem" }}>
                 <div className="card-body">
-                  <img
+                <img
                     src={`${process.env.REACT_APP_API}/api/v1/auth/user-photo/${userInfo._id}`}
                     className="card-img-top"
                     alt={userInfo.name}
                     style={{ height: "200px", width: "200px" }}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = defaultProfilePhoto;
+                    }}
                   />
                   <h4 className="card-title">Name: {userInfo.name}</h4>
                   <p className="card-text">Email: {userInfo.email}</p>
