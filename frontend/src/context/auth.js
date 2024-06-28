@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
 
     // Update axios default authorization header whenever auth state changes
     useEffect(() => {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${auth?.token}`;
+        axios.defaults.headers.common['Authorization'] = `${auth?.token}`;
     }, [auth?.token]);
 
     useEffect(() => {

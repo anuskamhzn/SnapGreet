@@ -14,32 +14,30 @@ const UserTemp = () => {
     const [auth] = useAuth();
     const navigate = useNavigate();
 
-    const handleUseTemplate = (templateType) => {
-        navigate(`/templateform/${templateType}`);
-    };
-
     useEffect(() => {
-        if (!auth.user) {
-            setLoading(false); // No need to keep loading if user is not authenticated
-            return;
-        }
-
         const fetchTemplates = async () => {
+            setLoading(true); // Start loading
+            setError(null); // Clear previous error
+
             try {
                 const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/usertemp/${auth.user._id}`);
-                setTemplates(response.data);
+                setTemplates(response.data || []);
             } catch (error) {
                 if (error.response && error.response.status === 404) {
-                    setTemplates([]);
+                    setTemplates([]); // No templates found
                 } else {
-                    setError(error.message);
+                    setError(error.message); // Other errors
                 }
             } finally {
-                setLoading(false);
+                setLoading(false); // Stop loading
             }
         };
 
-        fetchTemplates();
+        if (auth.user) {
+            fetchTemplates();
+        } else {
+            setLoading(false); // If no user, stop loading
+        }
     }, [auth.user]);
 
     if (!auth.user) {
@@ -58,6 +56,10 @@ const UserTemp = () => {
         return `/template-previews/${templateType}.png`;
     };
 
+    const handleUseTemplate = (templateType) => {
+        navigate(`/templateform/${templateType}`);
+    };
+
     return (
         <>
             <Header />
@@ -74,9 +76,11 @@ const UserTemp = () => {
                             {!loading && templates.length > 0 && (
                                 templates.map((template, index) => (
                                     <div key={index} className="card">
-                                        <a href={`https://tranquil-pixie-5382c9.netlify.app/${template.templateType}/${template._id}`}
+                                        <a
+                                            href={`https://resilient-moonbeam-0152f2.netlify.app/${template.templateType}/${template._id}`}
                                             target="_blank"
-                                            rel="noopener noreferrer">
+                                            rel="noopener noreferrer"
+                                        >
                                             <img
                                                 src={getImageSrc(template.templateType)}
                                                 alt={`${template.templateType} preview`}
@@ -86,12 +90,17 @@ const UserTemp = () => {
                                                     e.target.src = getFallbackImageSrc(template.templateType);
                                                 }}
                                             />
-                                            </a>
-                                            <div className="card-body">
-                                                <h5 className="card-title">{template.templateType}</h5>
-                                                <p className="card-text">{template.name}</p>
-                                                <button onClick={() => handleUseTemplate(template.templateType)} className="btn btn-primary">Use Template</button>
-                                            </div>
+                                        </a>
+                                        <div className="card-body">
+                                            <h5 className="card-title">{template.templateType}</h5>
+                                            <p className="card-text">{template.name}</p>
+                                            <button
+                                                onClick={() => handleUseTemplate(template.templateType)}
+                                                className="btn btn-primary"
+                                            >
+                                                Use Template
+                                            </button>
+                                        </div>
                                     </div>
                                 ))
                             )}

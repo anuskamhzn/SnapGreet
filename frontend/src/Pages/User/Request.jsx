@@ -13,22 +13,25 @@ const UserRequest = () => {
 
     useEffect(() => {
         const fetchRequests = async () => {
+            setLoading(true); // Start loading
+            setError(null); // Clear previous error
+
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/wish/requests?status=pending&postedBy=${auth.user._id}`);
+                const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/wish/requests/${auth.user._id}`);
                 setRequests(response.data);
             } catch (error) {
-                setError(error.message);
+                setError(error.message); // Set error message
             } finally {
-                setLoading(false);
+                setLoading(false); // Stop loading regardless of success or failure
             }
         };
 
         if (auth.user) {
             fetchRequests();
         } else {
-            setLoading(false);
+            setLoading(false); // If no user, stop loading
         }
-    }, [auth.user]);
+    }, [auth.user]); // Depend on auth.user
 
     return (
         <>

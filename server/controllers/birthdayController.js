@@ -138,19 +138,20 @@ export const birthdayPhotoController = async (req, res) => {
     }
 };
 
-//request made by specific user's id and status
+// Request made by specific user's ID and status 'pending'
 export const requestController = async (req, res) => {
-  try {
-    const { status, postedBy } = req.query;
-
-    if (!status || !postedBy) {
-      return res.status(400).json({ error: 'Missing required query parameters: status and postedBy' });
+    try {
+      const { id: postedBy } = req.params;
+  
+      if (!postedBy) {
+        return res.status(400).json({ error: 'Missing required parameter: id' });
+      }
+  
+      const status = 'pending'; // Hardcoded status as 'pending'
+      const requests = await birthdayModel.find({ status, postedBy });
+      res.json(requests);
+    } catch (error) {
+      console.error('Error fetching requests:', error);
+      res.status(500).json({ error: 'Server error' });
     }
-
-    const requests = await birthdayModel.find({ status, postedBy });
-    res.json(requests);
-  } catch (error) {
-    console.error('Error fetching requests:', error);
-    res.status(500).json({ error: 'Server error' });
-  }
-};
+  };

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from 'axios';
 import './css/admin.css';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import AdminMenu from '../../components/Menu/AdminMenu';
-import { Link } from 'react-router-dom';
+import defaultProfilePhoto from "../../imag/user/profile.jpg"; // Import the default profile photo
 
 const Request = () => {
     const [pendingWishes, setPendingWishes] = useState([]);
@@ -50,7 +50,7 @@ const Request = () => {
     };
 
     const renderImage = (photo) => {
-        if (!photo || !photo.data) return null;
+        if (!photo || !photo.data) return defaultProfilePhoto; // Return default photo if no photo data
         const base64String = arrayBufferToBase64(photo.data.data);
         return `data:${photo.contentType};base64,${base64String}`;
     };
@@ -89,18 +89,19 @@ const Request = () => {
                                         <div className="list-group-item notification" key={wish._id}>
                                             <div className="content">
                                                 <Link to={`/request-info/${wish.postedBy._id}`} className="link">
-                                                    {wish.postedBy.photo && (
-                                                        <img
-                                                            src={renderImage(wish.postedBy.photo)}
-                                                            alt="User Photo"
-                                                            className="user-photo"
-                                                        />
-                                                    )}
+                                                    <img
+                                                        src={renderImage(wish.postedBy.photo)}
+                                                        alt="User Photo"
+                                                        className="user-photo"
+                                                        onError={(e) => {
+                                                            e.target.onerror = null;
+                                                            e.target.src = defaultProfilePhoto;
+                                                        }}
+                                                    />
                                                 </Link>
                                                 <div className="user-details">
                                                     <div className="header">
                                                         {wish.postedBy.name} : {wish.postedBy.phone}
-
                                                     </div>
                                                     <div className="meta">{wish.templateType} : {wish.name}</div>
                                                 </div>

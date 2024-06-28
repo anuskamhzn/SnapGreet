@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import defaultProfilePhoto from "../../imag/user/profile.jpg"; // Import the default profile photo
 import "./css/users.css";
 
 const Users = () => {
@@ -44,14 +45,16 @@ const Users = () => {
                 <div key={user._id} className="card">
                   <Link to={`/user-info/${user._id}`} className="link">
                     <img
-                      src={`${process.env.REACT_APP_API}/api/v1/auth/user-photo/${user?._id}`}
+                      src={`${process.env.REACT_APP_API}/api/v1/auth/user-photo/${user._id}`}
                       className="pet-image img-fluid"
-                      alt={user?.name}
+                      alt={user.name}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = defaultProfilePhoto;
+                      }}
                     />
                     <div className="card-body">
-                      <h5 className="card-title">
-                        {user.name}
-                      </h5>
+                      <h5 className="card-title">{user.name}</h5>
                       <h6>{user.address}</h6>
                     </div>
                   </Link>

@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { MdOutlinePets } from "react-icons/md";
 import { useAuth } from "../context/auth";
 import toast from "react-hot-toast";
-// import SearchInput from "../Form/SearchInput";
 import styles from "./Header.css";
 import logo from "../imag/snapgreetlogo.png";
-
-import { FaLongArrowAltRight } from "react-icons/fa";
+import defaultProfilePhoto from "../imag/user/profile.jpg";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -21,6 +18,7 @@ const Header = () => {
   const showDropdown = (e) => {
     setShow(!show);
   };
+
   const hideDropdown = (e) => {
     setShow(false);
   };
@@ -32,6 +30,7 @@ const Header = () => {
     setActiveNav([...temp]);
     sessionStorage.setItem("NavbarMain", JSON.stringify(temp));
   };
+
   const [auth, setAuth] = useAuth();
 
   const handleLogout = () => {
@@ -44,13 +43,17 @@ const Header = () => {
     toast.success("Logout Success");
   };
 
+  const userPhotoUrl = auth?.user
+    ? `${process.env.REACT_APP_API}/api/v1/auth/user-photo/${auth.user._id}`
+    : defaultProfilePhoto;
+
   return (
     <>
       <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid container px-4 py-2">
           <Link to="/" className="navbar-brand">
-            <div className="logoimg ">
-              <img src={logo} className="img-fluid" alt="My Image" />
+            <div className="logoimg">
+              <img src={logo} className="img-fluid" alt="Logo" />
             </div>
           </Link>
           <button
@@ -88,55 +91,55 @@ const Header = () => {
               <NavLink
                 to="/about"
                 className={`${styles.nav_text} nav-link ${
-                  activeNav[0] ? styles.active : ""
+                  activeNav[1] ? styles.active : ""
                 }`}
                 onClick={() => {
-                  handleActiveNav(0);
+                  handleActiveNav(1);
                   closeNav();
                 }}
                 aria-current="page"
               >
                 About us
               </NavLink>
-            </p>{" "}
+            </p>
             <p className="nav-item p-2 pt-3 px-4">
               <NavLink
                 to="/helpadvice"
                 className={`${styles.nav_text} nav-link ${
-                  activeNav[0] ? styles.active : ""
+                  activeNav[2] ? styles.active : ""
                 }`}
                 onClick={() => {
-                  handleActiveNav(0);
+                  handleActiveNav(2);
                   closeNav();
                 }}
                 aria-current="page"
               >
                 Help and Advice
               </NavLink>
-            </p>{" "}
+            </p>
             <p className="nav-item p-2 pt-3 px-4">
               <NavLink
                 to="/template"
                 className={`${styles.nav_text} nav-link ${
-                  activeNav[0] ? styles.active : ""
+                  activeNav[3] ? styles.active : ""
                 }`}
                 onClick={() => {
-                  handleActiveNav(0);
+                  handleActiveNav(3);
                   closeNav();
                 }}
                 aria-current="page"
               >
                 Find a Template
               </NavLink>
-            </p>{" "}
+            </p>
             <p className="nav-item p-2 pt-3 px-4">
               <NavLink
                 to="/contact"
                 className={`${styles.nav_text} nav-link ${
-                  activeNav[0] ? styles.active : ""
+                  activeNav[4] ? styles.active : ""
                 }`}
                 onClick={() => {
-                  handleActiveNav(0);
+                  handleActiveNav(4);
                   closeNav();
                 }}
                 aria-current="page"
@@ -146,8 +149,6 @@ const Header = () => {
             </p>
             <ul className="navbar-nav">
               <div className="d-flex right-nav">
-                {/* <SearchInput /> */}
-
                 {auth.user ? (
                   <li className="dark-font nav-item dropdown loginbtn pt-1">
                     <NavLink
@@ -156,21 +157,28 @@ const Header = () => {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <span className="username ">
-                        {auth?.user?.name.length > 5
-                          ? auth?.user?.name.slice(0, 5) + ".."
-                          : auth?.user?.name}
+                      <span className="user-photo">
+                        <img
+                          src={userPhotoUrl}
+                          alt="User Photo"
+                          className="img-fluid"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = defaultProfilePhoto;
+                          }}
+                          style={{
+                            width: "40px",
+                            height: "40px",
+                            borderRadius: "50%",
+                          }}
+                        />
                       </span>
                     </NavLink>
                     <ul className="dropdown-menu loginbtn">
                       <li>
                         <NavLink
                           to={`/dashboard/${
-                            auth?.user?.role === 1
-                              ? "admin"
-                              : auth?.user?.role === 2
-                              ? "shelter"
-                              : "user"
+                            auth?.user?.role === 1 ? "admin" : "user"
                           }`}
                           className="dropdown-item"
                         >

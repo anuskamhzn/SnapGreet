@@ -4,18 +4,16 @@ import JWT from "jsonwebtoken";
 export const requireSignIn = (req, res, next) => {
   try {
     // Check for authorization header
-    const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    const token = req.headers.authorization;
+    if (!token) {
       return res.status(401).send({
         success: false,
         message: "Unauthorized Access: No token provided",
       });
     }
 
-    // Extract token
-    const token = authHeader.split(" ")[1];
+    // Verify token
     const decode = JWT.verify(token, process.env.JWT_SECRET);
-
     req.user = decode;
     next();
   } catch (error) {
@@ -27,25 +25,21 @@ export const requireSignIn = (req, res, next) => {
   }
 };
 
-
 export const isAdmin = async (req, res, next) => {
   try {
     const user = await userModel.findById(req.user._id);
-
     if (!user) {
       return res.status(401).send({
         success: false,
         message: "Unauthorized Access: User not found",
       });
     }
-
     if (user.role !== 1) {
       return res.status(401).send({
         success: false,
         message: "Unauthorized Access: Admin privileges required",
       });
     }
-
     next();
   } catch (error) {
     console.error("Error in isAdmin middleware:", error);

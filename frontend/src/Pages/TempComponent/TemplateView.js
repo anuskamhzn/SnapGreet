@@ -27,6 +27,11 @@ const TemplateView = () => {
     return <div>Loading...</div>;
   }
 
+
+  // Construct photo URLs
+  const photoURLs = template.photoURLs.map(photoId => `${process.env.REACT_APP_API}${photoId}`);
+  console.log(photoURLs);
+
   return (
     <BirthdayTemplate
       name={template.name}
@@ -34,7 +39,7 @@ const TemplateView = () => {
       description1={template.description1}
       description2={template.description2}
       templateType={template.templateType}
-      photos={template.photoURLs} // Pass the photo URLs
+      photos={photoURLs} // Pass the photo URLs
     />
   );
 };
