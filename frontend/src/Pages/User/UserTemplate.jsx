@@ -20,7 +20,7 @@ const UserTemp = () => {
             setError(null); // Clear previous error
 
             try {
-                const response = await axios.get(`/api/v1/auth/usertemp/${auth.user._id}`);
+                const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/usertemp/${auth.user._id}`);
                 setTemplates(response.data || []);
             } catch (error) {
                 if (error.response && error.response.status === 404) {
@@ -77,7 +77,7 @@ const UserTemp = () => {
                                 templates.map((template, index) => (
                                     <div key={index} className="card">
                                         <a
-                                            href={`http://localhost:3000/${template.templateType}/${template._id}`}
+                                            href={`https://resilient-moonbeam-0152f2.netlify.app/${template.templateType}/${template._id}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >

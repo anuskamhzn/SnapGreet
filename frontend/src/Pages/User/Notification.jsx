@@ -16,7 +16,7 @@ const Notification = () => {
 
         const fetchNotifications = async () => {
             try {
-                const response = await axios.get(`/api/v1/notifications/${auth.user._id}`, {
+                const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/notifications/${auth.user._id}`, {
                     headers: {
                         Authorization: auth.token // Send token directly
                     }
@@ -59,7 +59,7 @@ const Notification = () => {
                                             {/* Additional details if needed */}
                                         </div>
                                         <a
-                                            href={`http://localhost:3000/${notification.templateType}/${notification.birthdayModelId}`}
+                                            href={`https://resilient-moonbeam-0152f2.netlify.app/${notification.templateType}/${notification.birthdayModelId}`}
                                             className="approve-button"
                                             target="_blank"
                                             rel="noopener noreferrer"

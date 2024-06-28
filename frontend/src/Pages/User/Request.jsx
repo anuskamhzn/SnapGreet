@@ -17,7 +17,7 @@ const UserRequest = () => {
             setError(null); // Clear previous error
 
             try {
-                const response = await axios.get(`/api/v1/wish/requests/${auth.user._id}`);
+                const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/wish/requests/${auth.user._id}`);
                 setRequests(response.data);
             } catch (error) {
                 setError(error.message); // Set error message
