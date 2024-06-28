@@ -18,18 +18,22 @@ const Notification = () => {
 
         const fetchNotifications = async () => {
             try {
-                const response = await axios.get(`/api/v1/notifications/${auth.user._id}`);
-                setNotifications(response.data.data);
+                const response = await axios.get(`/api/v1/notifications/${auth.user._id}`, {
+                    headers: {
+                        Authorization: `Bearer ${auth.token}` // Include the token in the request headers
+                    }
+                });
+                setNotifications(response.data.data); // Update state with fetched data
             } catch (error) {
                 console.error("Error fetching notifications:", error);
-                setError(error.message);
+                setError(error.response ? error.response.data.message : error.message);
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchNotifications();
-    }, [auth.user]);
+        fetchNotifications(); // Fetch data on component mount
+    }, [auth.user, auth.token]);
 
     return (
         <>
@@ -50,6 +54,8 @@ const Notification = () => {
                                     <li key={notification._id} className="notification">
                                         <div className="content">
                                             <div className="header">{notification.message}</div>
+                                            {/* <div className="meta">Notification details</div>
+                                            <div className="description">Additional information about the notification.</div> */}
                                         </div>
                                         <a
                                             href={`http://localhost:3000/${notification.templateType}/${notification.birthdayModelId}`}
