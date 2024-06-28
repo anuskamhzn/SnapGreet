@@ -50,7 +50,7 @@ const Header = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg ">
-        <div className="container-fluid container">
+        <div className="container-fluid container px-4 py-2">
           <Link to="/" className="navbar-brand">
             <div className="logoimg">
               <img src={logo} className="img-fluid" alt="Logo" />
@@ -75,8 +75,9 @@ const Header = () => {
             <p className="nav-item p-2 pt-3 px-4">
               <NavLink
                 to="/"
-                className={`${styles.nav_text} nav-link ${activeNav[0] ? styles.active : ""
-                  }`}
+                className={`${styles.nav_text} nav-link ${
+                  activeNav[0] ? styles.active : ""
+                }`}
                 onClick={() => {
                   handleActiveNav(0);
                   closeNav();
@@ -89,8 +90,9 @@ const Header = () => {
             <p className="nav-item p-2 pt-3 px-4">
               <NavLink
                 to="/about"
-                className={`${styles.nav_text} nav-link ${activeNav[1] ? styles.active : ""
-                  }`}
+                className={`${styles.nav_text} nav-link ${
+                  activeNav[1] ? styles.active : ""
+                }`}
                 onClick={() => {
                   handleActiveNav(1);
                   closeNav();
@@ -103,8 +105,9 @@ const Header = () => {
             <p className="nav-item p-2 pt-3 px-4">
               <NavLink
                 to="/helpadvice"
-                className={`${styles.nav_text} nav-link ${activeNav[2] ? styles.active : ""
-                  }`}
+                className={`${styles.nav_text} nav-link ${
+                  activeNav[2] ? styles.active : ""
+                }`}
                 onClick={() => {
                   handleActiveNav(2);
                   closeNav();
@@ -117,8 +120,9 @@ const Header = () => {
             <p className="nav-item p-2 pt-3 px-4">
               <NavLink
                 to="/template"
-                className={`${styles.nav_text} nav-link ${activeNav[3] ? styles.active : ""
-                  }`}
+                className={`${styles.nav_text} nav-link ${
+                  activeNav[3] ? styles.active : ""
+                }`}
                 onClick={() => {
                   handleActiveNav(3);
                   closeNav();
@@ -131,8 +135,9 @@ const Header = () => {
             <p className="nav-item p-2 pt-3 px-4">
               <NavLink
                 to="/contact"
-                className={`${styles.nav_text} nav-link ${activeNav[4] ? styles.active : ""
-                  }`}
+                className={`${styles.nav_text} nav-link ${
+                  activeNav[4] ? styles.active : ""
+                }`}
                 onClick={() => {
                   handleActiveNav(4);
                   closeNav();
@@ -161,14 +166,20 @@ const Header = () => {
                             e.target.onerror = null;
                             e.target.src = defaultProfilePhoto;
                           }}
-                          style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+                          style={{
+                            width: "40px",
+                            height: "40px",
+                            borderRadius: "50%",
+                          }}
                         />
                       </span>
                     </NavLink>
                     <ul className="dropdown-menu loginbtn">
                       <li>
                         <NavLink
-                          to={`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"}`}
+                          to={`/dashboard/${
+                            auth?.user?.role === 1 ? "admin" : "user"
+                          }`}
                           className="dropdown-item"
                         >
                           Dashboard

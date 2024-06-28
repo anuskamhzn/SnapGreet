@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
-import pethouse from "../../imag/petpalslogo (2).png";
+import pethouse from "../../imag/snapgreet.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
@@ -18,7 +18,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/login`, { email, password });
+      const res = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/auth/login`,
+        { email, password }
+      );
       if (res.data && res.data.success) {
         toast.success(res.data.message);
         setAuth({

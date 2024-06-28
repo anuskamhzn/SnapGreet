@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
-import pethouse from "../../imag/pethouse.png";
+import pethouse from "../../imag/snapgreet.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
@@ -34,13 +34,16 @@ const Register = () => {
     }
 
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`, {
-        name,
-        email,
-        password,
-        confirmPass,
-        phone,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/auth/register`,
+        {
+          name,
+          email,
+          password,
+          confirmPass,
+          phone,
+        }
+      );
       if (res.data.success) {
         toast.success(res.data.message);
         navigate("/login");
@@ -119,16 +122,16 @@ const Register = () => {
                 required
               />
             </div>
-            <button type="submit" className="btn-more">
+            <button type="submit" className="btn-more px-3 py-2">
               Submit
             </button>
 
             <button
               type="button"
-              className="btn-more"
+              className="btn-outline-more px-3 py-2 mx-2"
               onClick={() => navigate("/login")}
             >
-              Already have an account?
+              Already signed up?
             </button>
           </form>
         </div>
