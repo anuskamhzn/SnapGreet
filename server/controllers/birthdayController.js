@@ -17,7 +17,7 @@ export const createUserController = async (req, res) => {
       if (!description2) return res.status(400).send({ error: "Description 2 is required." });
       if (!templateType) return res.status(400).send({ error: "Choose a template." });
       if (!photos || (Array.isArray(photos) && photos.length === 0)) {
-          return res.status(400).send({ error: "At least one photo is required." });
+          return res.status(400).send({ error: "Choose 3 photos." });
       }
 
         // Check the number of photos
