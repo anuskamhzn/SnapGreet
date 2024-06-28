@@ -12,28 +12,30 @@ const Notification = () => {
     const [auth] = useAuth();
 
     useEffect(() => {
-        if (!auth.user) {
-            return;
-        }
+        setLoading(true); // Set loading to true when fetching starts
 
         const fetchNotifications = async () => {
             try {
                 const response = await axios.get(`/api/v1/notifications/${auth.user._id}`, {
                     headers: {
-                        Authorization: `Bearer ${auth.token}` // Include the token in the request headers
+                        Authorization: auth.token // Send token directly
                     }
                 });
-                setNotifications(response.data.data); // Update state with fetched data
+                setNotifications(response.data.data || []); // Ensure notifications is always an array
             } catch (error) {
                 console.error("Error fetching notifications:", error);
                 setError(error.response ? error.response.data.message : error.message);
             } finally {
-                setLoading(false);
+                setLoading(false); // Always set loading to false, whether successful or not
             }
         };
 
-        fetchNotifications(); // Fetch data on component mount
-    }, [auth.user, auth.token]);
+        if (auth.user) {
+            fetchNotifications();
+        } else {
+            setLoading(false); // If no user, stop loading
+        }
+    }, [auth.user, auth.token]); // Depend on auth.user and auth.token
 
     return (
         <>
@@ -54,8 +56,7 @@ const Notification = () => {
                                     <li key={notification._id} className="notification">
                                         <div className="content">
                                             <div className="header">{notification.message}</div>
-                                            {/* <div className="meta">Notification details</div>
-                                            <div className="description">Additional information about the notification.</div> */}
+                                            {/* Additional details if needed */}
                                         </div>
                                         <a
                                             href={`http://localhost:3000/${notification.templateType}/${notification.birthdayModelId}`}
