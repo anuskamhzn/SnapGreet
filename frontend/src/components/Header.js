@@ -47,9 +47,9 @@ const Header = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg ">
-        <div className="container-fluid container">
+        <div className="container-fluid container px-4 py-2">
           <Link to="/" className="navbar-brand">
-            <div className="logoimg">
+            <div className="logoimg ">
               <img src={logo} className="img-fluid" alt="My Image" />
             </div>
           </Link>

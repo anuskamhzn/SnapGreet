@@ -59,11 +59,15 @@ const TemplateForm = ({ onNewTemplate }) => {
     });
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API}/api/v1/wish/template`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/wish/template`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       // Set session storage and navigate to the homepage with state
       sessionStorage.setItem("showPopup", "true");
@@ -82,7 +86,7 @@ const TemplateForm = ({ onNewTemplate }) => {
   return (
     <>
       <Header />
-      <div className="template-form mt-4">
+      <div className="template-form mt-5 pt-5">
         <h2>Create Template</h2>
         {error && <div className="error">{error}</div>}
         <form onSubmit={handleSubmit} encType="multipart/form-data">

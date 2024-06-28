@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
-import pethouse from "../../imag/petpalslogo (2).png";
+import pethouse from "../../imag/snapgreet.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
