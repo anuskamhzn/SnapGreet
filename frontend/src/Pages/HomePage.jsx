@@ -34,14 +34,6 @@ const HomePage = () => {
     <>
       <Header />
       <Hero />
-      <Real />
-      <div
-        className="text-center  pb-5 pl-5 container"
-        data-aos="slide-up"
-        data-aos-offset="100"
-      >
-        <Straight />
-      </div>
 
       <div className="mt-3">
         <div className="Featured">

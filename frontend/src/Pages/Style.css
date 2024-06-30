@@ -114,14 +114,17 @@ le.css */
     margin-top: 0px;
   }
 }
+.hero-banner {
+  background-color: #d8749d;
+}
 .herotext {
   text-align: start;
   font-family: "Poppins" !important ;
 }
-.herotext h3 {
+.hero-text h3 {
   font-weight: 500;
 }
-.herotext p {
+.hero-text p {
   color: #d4d3d3 !important;
   font-weight: 300;
 }
@@ -132,33 +135,14 @@ le.css */
 /* .swiper img {
   filter: brightness(70%);
 } */
-@media (max-width: 767px) {
-  .owl-carousel-item img {
-    height: 600px !important;
-    max-width: 800px;
-    overflow: hidden !important;
-    object-fit: contains;
-    max-inline-size: 100%;
-    block-size: auto;
-    aspect-ratio: 2/1;
-    object-fit: cover;
-    object-position: top center;
-  }
-  .herotext {
-    justify-content: center !important;
-    text-align: center;
-  }
+.hero-text {
+  justify-content: space-between;
 }
 .loginbtn {
   background-color: #ffffff !important;
   border-radius: 2rem !important;
   margin-left: 1rem;
   max-width: 100%;
-}
-@media screen and (max-width: 991px) {
-  .right-nav {
-    margin-left: 1.3rem;
-  }
 }
 
 .grey {
@@ -171,34 +155,34 @@ le.css */
   padding-bottom: 4rem;
   font-family: "Poppins" !important ;
 }
-.pet-card {
-  border-radius: 2rem;
-  background-color: white;
-  font-family: "Poppins" !important ;
-}
-.pet-image {
-  border-radius: 1.8rem;
-  height: 200px;
-}
 
 .btn-purple {
   background-color: #3f2644;
+  width: 8rem;
 }
 .btn-outline-more {
   color: black;
   border: 1px solid #4e2d69;
-  border-radius: 2rem;
+  border-radius: 1rem;
   padding-left: 15px;
   padding-right: 15px;
 }
+.snapcolor {
+  color: #e186f6;
+}
 .btn-more {
   font-size: 15px;
-  background-color: #4e2d69;
-  border-radius: 2rem;
+  background-color: #e186f6;
+  border-radius: 1rem;
   padding-left: 15px;
   padding-right: 15px;
   color: white;
   border: none;
+}
+@media screen and (max-width: 500px) {
+  .btn-more {
+    width: 100%;
+  }
 }
 .btn-more:hover {
   cursor: pointer !important;
@@ -236,15 +220,6 @@ le.css */
   text-align: center;
 }
 
-.input {
-  width: 100%;
-  background-color: #ffffff;
-  border-radius: 6px;
-  border: solid 1px #e8e8e8;
-  height: 60px;
-  margin: 9px 0px 5px;
-  padding-left: 15px;
-}
 .Menucard {
   background: linear-gradient(to top, #4e2d69, #656ebb) !important;
   padding-bottom: 1px;
@@ -295,6 +270,9 @@ le.css */
   background-color: #4e2d69;
   border-radius: 0.8rem;
 }
+.herotext {
+  font-size: 36px !important;
+}
 @media screen and (max-width: 767px) {
   .col-sms-10 {
     flex: 0 0 auto;
@@ -306,25 +284,40 @@ le.css */
     flex: 0 0 auto;
     width: 100%;
   }
+  .mockup img {
+    max-width: 50%;
+  }
 }
+
 @media screen and (max-width: 576px) {
   .col-sms-5 {
     flex: 0 0 auto;
-    width: 41.66666667%;
-  }
-}
-@media screen and (max-width: 380px) {
-  .col-sms-5 {
-    flex: 0 0 auto;
     width: 100%;
-    margin-left: 3rem !important;
-    margin-right: 3rem !important;
+
+    text-align: center;
+  }
+  .herotext {
+    font-size: 23px !important;
+    padding-left: 3rem;
+    padding-right: 3rem;
+
+    text-align: center;
+  }
+  .hero-text {
+    text-align: center !important;
+  }
+  .hero-text p {
+    color: #d4d3d3 !important;
+    font-size: 14px !important;
   }
 }
 @media screen and (max-width: 991px) {
   .filter {
     padding: 1rem;
   }
+}
+.mockup {
+  padding-top: 2rem;
 }
 
 .card {
@@ -353,7 +346,7 @@ le.css */
   border-radius: 2rem;
 }
 .real {
-  padding-bottom: 2rem  ;
+  padding-bottom: 2rem;
 }
 .waves {
   position: relative;

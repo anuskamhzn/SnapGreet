@@ -10,12 +10,6 @@ import {
 } from "react-icons/fa";
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import class1 from "../imag/pet1.jpg";
-import class2 from "../imag/pet2.jpg";
-import class3 from "../imag/pet3.jpg";
-import class4 from "../imag/pet4.jpg";
-import class5 from "../imag/pet5.jpg";
-import class6 from "../imag/pet6.jpg";
 import emailjs from "@emailjs/browser";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -71,16 +65,11 @@ const Footer = () => {
       data-wow-delay="0.1s"
       id="dark"
     >
-      <div className="container py-5">
-        <div className="row g-5">
-          <div className="col-lg-3 col-md-6">
-            <h3 className="text-white mb-4">Get In Touch</h3>
-            <p className="mb-2">
-              <i className="fa fa-map-marker-alt me-3">
-                <FaMapMarker />
-              </i>
-              Imadol, Lalitpur, Nepal
-            </p>
+      <div className="container py-1">
+        <div className="row justify-content-center">
+          <div className="col-lg-6 col-md-6 py-2">
+            <h3 className="text-white mb-4">Contact us</h3>
+
             <p className="mb-2">
               <i className="fa fa-phone-alt me-3">
                 <FaPhoneAlt />
@@ -146,77 +135,9 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div className="col-lg-3 col-md-6">
-            <h3 className="text-white mb-4">Quick Links</h3>
-            <Link to="/about" className="btn  text-white-50">
-              About Us
-            </Link>
-            <Link to="/contact" className="btn text-white-50">
-              Contact Us
-            </Link>
-            <Link to="/Ourmissions" className="btn text-white-50">
-              Our Services
-            </Link>
-            <Link to="/policy" className="btn text-white-50">
-              Privacy Policy
-            </Link>
-            <Link to="/terms" className="btn text-white-50">
-              Terms & Conditions
-            </Link>
-          </div>
-          <div className="col-lg-3 col-md-6">
-            <h3 className="text-white mb-4">Photo Gallery</h3>{" "}
-            <Link to="Gallery">
-              <Link to="Gallery">
-                <div className="row g-2 pt-2">
-                  <div className="col-4">
-                    <img
-                      className="img-fluid rounded bg-light p-1"
-                      src={class1}
-                      alt=""
-                    />
-                  </div>
-                  <div className="col-4">
-                    <img
-                      className="img-fluid rounded bg-light p-1"
-                      src={class2}
-                      alt=""
-                    />
-                  </div>
-                  <div className="col-4">
-                    <img
-                      className="img-fluid rounded bg-light p-1"
-                      src={class3}
-                      alt=""
-                    />
-                  </div>
-                  <div className="col-4">
-                    <img
-                      className="img-fluid rounded bg-light p-1"
-                      src={class4}
-                      alt=""
-                    />
-                  </div>
-                  <div className="col-4">
-                    <img
-                      className="img-fluid rounded bg-light p-1"
-                      src={class5}
-                      alt=""
-                    />
-                  </div>
-                  <div className="col-4">
-                    <img
-                      className="img-fluid rounded bg-light p-1"
-                      src={class6}
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </Link>
-            </Link>
-          </div>
-          <div className="col-lg-3 col-md-6">
-            <h3 className="text-white mb-4">Pet Shelter enquiry</h3>
+
+          <div className="col-lg-6 col-md-6 py-2">
+            <h3 className="text-white mb-4">Any enquiry?</h3>
             <p>Please message us for any enquiries</p>
             <div
               className="position-relative mx-auto"

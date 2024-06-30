@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Real.module.css";
 import coastline from "../../../imag/SmallLogo.png";
-import improveImg from "../../../imag/straight.jpg";
 import { Link } from "react-router-dom";
 
 const Real = () => {

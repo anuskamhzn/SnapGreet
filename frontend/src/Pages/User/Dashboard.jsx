@@ -43,34 +43,39 @@ const Notification = () => {
   return (
     <>
       <Header />
-      <div className="containe m-3 p-3 pt-4">
-        <div className="pt-4 admin-container">
-          <h1>Notifications</h1>
-          {loading && <p className="loading">Loading...</p>}
-          {error && <p className="error">{error}</p>}
-          {!loading && !error && notifications.length === 0 && (
-            <p className="no-notifications">No notifications found.</p>
-          )}
-          {!loading && !error && notifications.length > 0 && (
-            <ul className="list-group">
-              {notifications.map((notification) => (
-                <li key={notification._id} className="notification">
-                  <div className="content">
-                    <div className="header">{notification.message}</div>
-                    {/* Additional details if needed */}
-                  </div>
-                  <a
-                    href={`https://resilient-moonbeam-0152f2.netlify.app/${notification.templateType}/${notification.birthdayModelId}`}
-                    className="approve-button"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Link to Template
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
+      <div className="container  p-3 pt-4">
+        <div className="row">
+          <div className="col-md-3">
+            <UserMenu />
+          </div>
+          <div className="col-md-9 pt-4 admin-container">
+            <h1>Notifications</h1>
+            {loading && <p className="loading">Loading...</p>}
+            {error && <p className="error">{error}</p>}
+            {!loading && !error && notifications.length === 0 && (
+              <p className="no-notifications">No notifications found.</p>
+            )}
+            {!loading && !error && notifications.length > 0 && (
+              <ul className="list-group">
+                {notifications.map((notification) => (
+                  <li key={notification._id} className="notification">
+                    <div className="content">
+                      <div className="header">{notification.message}</div>
+                      {/* Additional details if needed */}
+                    </div>
+                    <a
+                      href={`https://resilient-moonbeam-0152f2.netlify.app/${notification.templateType}/${notification.birthdayModelId}`}
+                      className="approve-button"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Link to Template
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
       <Footer />

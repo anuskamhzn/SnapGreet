@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
-import pethouse from "../../imag/snapgreet.png";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import pethouse from "../../imag/snapgreetlogo.png";
+import { MdOutlineAlternateEmail } from "react-icons/md";
+import { MdLockOpen } from "react-icons/md";
+import { MdOutlinePhone } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
 
 const Register = () => {
   const { search } = useLocation();
@@ -58,85 +60,110 @@ const Register = () => {
 
   return (
     <>
-      <Header />
-      <div className="register row">
-        <div className="col-md-5">
-          <img
-            src={pethouse}
-            className="img-fluid"
-            data-aos="fade"
-            data-aos-offset="100"
-            alt="Pet House"
-          />
-        </div>
-        <div className="col-md-5 p-4">
-          <h1>Register</h1>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="form-control"
-                placeholder="Enter Name"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="form-control"
-                placeholder="Enter Email"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="form-control"
-                placeholder="Enter Password"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="password"
-                value={confirmPass}
-                onChange={(e) => setConfirmPass(e.target.value)}
-                className="form-control"
-                placeholder="Confirm Password"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="text"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="form-control"
-                placeholder="Enter Phone no."
-                required
-              />
-            </div>
-            <button type="submit" className="btn-more px-3 py-2">
-              Submit
-            </button>
+      <div className="container register">
+        <div className=" row mx-2 mt-5 justify-content-center align-item-center loginpage">
+          <div className="col-md-5 text-center">
+            {" "}
+            <img
+              src={pethouse}
+              className="img-fluid"
+              data-aos="fade"
+              data-aos-offset="100"
+              alt="Pet House"
+            />
+          </div>
+          <div className="col-md-5 p-4">
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3 position-relative">
+                <p>Enter your name</p>
+                <span className="input-icons">
+                  <CgProfile />
+                </span>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="input"
+                  placeholder="Eg: Snapgreeter"
+                  required
+                />
+              </div>
+              <div className="mb-3 position-relative">
+                <p>Enter your email</p>
+                <span className="input-icons">
+                  <MdOutlineAlternateEmail />
+                </span>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="input"
+                  placeholder="Eg: snapgreeter@gmail.com"
+                  required
+                />
+              </div>
+              <div className="mb-3 position-relative">
+                <p>Enter password</p>
+                <span className="input-icons">
+                  <MdLockOpen />
+                </span>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="input"
+                  placeholder="********"
+                  required
+                />
+              </div>
+              <div className="mb-3 position-relative">
+                <p>Confirm password</p>{" "}
+                <span className="input-icons">
+                  <MdLockOpen />
+                </span>
+                <input
+                  type="password"
+                  value={confirmPass}
+                  onChange={(e) => setConfirmPass(e.target.value)}
+                  className="input"
+                  placeholder="********"
+                  required
+                />
+              </div>
+              <div className="mb-3 position-relative">
+                <p>Enter your number</p>
+                <span className="input-icons">
+                  <MdOutlinePhone />
+                </span>
 
-            <button
-              type="button"
-              className="btn-outline-more px-3 py-2 mx-2"
-              onClick={() => navigate("/login")}
-            >
-              Already signed up?
-            </button>
-          </form>
+                <input
+                  type="text"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="input"
+                  placeholder="9841123456"
+                  required
+                />
+              </div>
+              <button type="submit" className="btn-more px-3 py-2">
+                Submit
+              </button>
+              <p>
+                <br></br>
+                Already have an account?
+                <NavLink
+                  to="/login"
+                  className="snapcolor px-1 mb-4"
+                  data-aos="slide-up"
+                  data-aos-offset="50"
+                >
+                  Log in
+                </NavLink>
+              </p>
+            </form>
+          </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
