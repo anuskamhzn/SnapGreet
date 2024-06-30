@@ -29,7 +29,8 @@ import "aos/dist/aos.css";
 
 const App = () => {
   const [auth] = useAuth();
-  const handleNewTemplate = (template) => {};
+
+  const handleNewTemplate = (template) => { };
   AOS.init({
     // Global settings:
     // disable: "mobile", // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
@@ -55,10 +56,14 @@ const App = () => {
       <Toaster />
       <Routes>
         <Route
+          path="/login"
+          element={!(auth?.user) ? <Login /> : <Navigate to="/" />}
+        />
+        <Route
           path="/"
           element={auth?.user ? <Homepage /> : <Navigate to="/login" />}
         />
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/template" element={<FindTemplate />} />

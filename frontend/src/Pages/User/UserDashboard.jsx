@@ -59,7 +59,7 @@ const UserDashboard = () => {
                   </Link>{" "}
                   <Link
                     onClick={handleLogout}
-                    to="/login"
+                    to="/"
                     className=" py-3 my-2 btn-more"
                   >
                     Log out{" "}
