@@ -1,41 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useAuth } from '../../context/auth';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import UserMenu from '../../components/Menu/UserMenu';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useAuth } from "../../context/auth";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import UserMenu from "../../components/Menu/UserMenu";
 
 const Notification = () => {
-    const [notifications, setNotifications] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [auth] = useAuth();
+  const [notifications, setNotifications] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [auth] = useAuth();
 
-    useEffect(() => {
-        setLoading(true); // Set loading to true when fetching starts
+  useEffect(() => {
+    setLoading(true); // Set loading to true when fetching starts
 
-        const fetchNotifications = async () => {
-            try {
-                const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/notifications/${auth.user._id}`, {
-                    headers: {
-                        Authorization: auth.token // Send token directly
-                    }
-                });
-                setNotifications(response.data.data || []); // Ensure notifications is always an array
-            } catch (error) {
-                console.error("Error fetching notifications:", error);
-                setError(error.response ? error.response.data.message : error.message);
-            } finally {
-                setLoading(false); // Always set loading to false, whether successful or not
-            }
-        };
+    const fetchNotifications = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API}/api/v1/notifications/${auth.user._id}`,
+          {
+            headers: {
+              Authorization: auth.token, // Send token directly
+            },
+          }
+        );
+        setNotifications(response.data.data || []); // Ensure notifications is always an array
+      } catch (error) {
+        console.error("Error fetching notifications:", error);
+        setError(error.response ? error.response.data.message : error.message);
+      } finally {
+        setLoading(false); // Always set loading to false, whether successful or not
+      }
+    };
 
-        if (auth.user) {
-            fetchNotifications();
-        } else {
-            setLoading(false); // If no user, stop loading
-        }
-    }, [auth.user, auth.token]); // Depend on auth.user and auth.token
+    if (auth.user) {
+      fetchNotifications();
+    } else {
+      setLoading(false); // If no user, stop loading
+    }
+  }, [auth.user, auth.token]); // Depend on auth.user and auth.token
 
     return (
         <>

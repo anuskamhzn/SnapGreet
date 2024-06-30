@@ -3,9 +3,9 @@ import axios from "axios";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
-import pethouse from "../../imag/snapgreet.png";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import pethouse from "../../imag/snapgreetlogo.png";
+import { MdOutlineAlternateEmail } from "react-icons/md";
+import { MdLockOpen } from "react-icons/md";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -50,10 +50,9 @@ const Login = () => {
 
   return (
     <>
-      <Header />
-      <div className="container">
-        <div className="register row">
-          <div className="col-md-5">
+      <div className="container register">
+        <div className=" row mx-2  mb-4 mt-4 justify-content-center align-item-center loginpage">
+          <div className="col-md-5 text-center">
             <img
               src={pethouse}
               className="img-fluid"
@@ -61,23 +60,37 @@ const Login = () => {
               data-aos-offset="100"
               alt="Pet House"
             />
-          </div>
+          </div>{" "}
           <div className="col-md-5">
-            <h1>Welcome</h1>
-            <p>Login to your Account</p>
             <form onSubmit={handleSubmit}>
-              <div className="mb-3" data-aos="slide-up" data-aos-offset="100">
+              <div
+                className="mb-3 position-relative"
+                data-aos="slide-up"
+                data-aos-offset="100"
+              >
+                <p>Email</p>{" "}
+                <span className="input-icons">
+                  <MdOutlineAlternateEmail />
+                </span>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="input"
+                  className="input "
                   id="exampleInputEmail1"
                   placeholder="Enter Email"
                   required
                 />
               </div>
-              <div className="mb-3" data-aos="slide-up" data-aos-offset="100">
+              <div
+                className=" position-relative"
+                data-aos="slide-up"
+                data-aos-offset="100"
+              >
+                <p>Password</p>
+                <span className="input-icons">
+                  <MdLockOpen />
+                </span>
                 <input
                   type="password"
                   value={password}
@@ -88,34 +101,35 @@ const Login = () => {
                   required
                 />
               </div>
-              <div className="mb-3" data-aos="slide-up" data-aos-offset="100">
+              <div className="" data-aos="slide-up" data-aos-offset="100">
                 <NavLink to="/forgot-password" className="btn">
                   Forgot Password?
                 </NavLink>
               </div>
-              <div className="d-flex">
-                <button
-                  type="submit"
-                  className="btn-more px-5 py-3 btn-login mx-1"
-                  data-aos="slide-up"
-                  data-aos-offset="100"
-                >
-                  Login
-                </button>
+              <button
+                type="submit"
+                className="btn-more px-5 py-3 btn-login mx-1 mb-2"
+                data-aos="slide-up"
+                data-aos-offset="50"
+              >
+                Login
+              </button>
+              <p>
+                <br></br>
+                Don't have an account?
                 <NavLink
                   to="/register"
-                  className="btn-outline-more px-5 py-3 btn-login mx-1"
+                  className="snapcolor px-1 mb-4"
                   data-aos="slide-up"
-                  data-aos-offset="100"
+                  data-aos-offset="50"
                 >
                   Register
                 </NavLink>
-              </div>
+              </p>
             </form>
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

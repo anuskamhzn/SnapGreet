@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Salsa&display=swap");
+
 .nav_text:hover {
   color: black !important;
 }
@@ -33,7 +35,11 @@
   .dropdownItem {
     text-align: center !important;
   }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> d1789c86065b8304d692fd5eb0ae2ef8b9f3f8cc
   .dropdownItem:hover .dropdownText {
     color: #9e2222;
   }
@@ -50,6 +56,8 @@
     font-size: 25px !important;
   }
 }
+@media screen and (max-width: 600px) {
+}
 
 /* Add the following styles to your existing CSS */
 
@@ -62,7 +70,7 @@
 
 /* Styles for the logo */
 .logoimg img {
-  height: 60px !important;
+  height: 40px;
   /* Push the logo to the left */
 }
 
@@ -80,5 +88,78 @@
 
   .logo {
     margin-bottom: 10px !important; /* Add some space between the logo and the links */
+  }
+}
+.rightnav {
+  column-gap: 3rem;
+}
+.rightnavicon {
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #f1f2f7;
+}
+.logoname {
+  font-size: 35px;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  font-family: "Salsa", cursive;
+}
+.nav-icon-1 {
+  height: 20px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: -100px !important;
+
+  max-width: 100%;
+}
+.nav-icon {
+  height: 30px;
+}
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 769px) {
+  .rightnav {
+    column-gap: 1.4rem;
+  }
+  .logoname {
+    font-size: 26px;
+    padding-top: 0.7rem;
+    padding-left: 0.5rem;
+  }
+  .logoimg img {
+    height: 40px;
+  }
+  .nav-icon-1 {
+    height: 23px;
+    padding: 0px;
+
+    padding-left: 1px;
+    padding-right: 1px;
+
+    max-width: 100%;
+  }
+  .nav-icon {
+    height: 28px;
+    padding: 0px;
+
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .rightnavicon {
+    padding: 7px;
+    padding-top: 3px;
+  }
+  .profile-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .nav-container {
+    justify-content: center !important;
   }
 }
