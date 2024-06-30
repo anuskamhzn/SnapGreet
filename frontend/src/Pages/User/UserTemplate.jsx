@@ -78,7 +78,7 @@ const UserTemp = () => {
                                     <div key={index} className="card">
                                         {template.status !== 'rejected' ? (
                                             <a
-                                                href={`http://localhost:3000/${template.templateType}/${template._id}`}
+                                                href={`https://resilient-moonbeam-0152f2.netlify.app/${template.templateType}/${template._id}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >

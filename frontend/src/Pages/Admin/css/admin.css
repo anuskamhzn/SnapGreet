@@ -25,6 +25,7 @@
 
 .user-photo {
   max-width: 100px;
+  margin-right: 20px;
   border-radius: 50%;
 }
 
@@ -56,4 +57,17 @@
 
 .approve-button:hover {
   background-color: #0056b3;
+}
+
+.reject-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.reject-button:hover {
+  background-color: darkred;
 }
