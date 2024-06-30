@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -20,11 +20,22 @@ const TemplateForm = ({ onNewTemplate }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    // Cleanup URL objects when component unmounts
+    return () => {
+      photoPreviews.forEach((previewUrl) => URL.revokeObjectURL(previewUrl));
+    };
+  }, [photoPreviews]);
+
   const handlePhotoUpload = (e) => {
     const files = Array.from(e.target.files);
 
+    // Reset previous previews
+    setPhotoPreviews([]);
+
     // Check if exactly 3 photos are selected
     if (files.length !== 3) {
+      setPhotos([]);
       toast.error("Please select exactly 3 photos.");
       return;
     }
@@ -42,6 +53,38 @@ const TemplateForm = ({ onNewTemplate }) => {
     if (!auth?.user) {
       toast.error("Please log in to create a template.");
       navigate("/login");
+      return;
+    }
+
+    // Frontend validation
+    if (!name) {
+      toast.error("Name is required.");
+      return;
+    }
+    if (!nickname) {
+      toast.error("Nickname is required.");
+      return;
+    }
+    if (!description1) {
+      toast.error("Description 1 is required.");
+      return;
+    }
+    if (!description2) {
+      toast.error("Description 2 is required.");
+      return;
+    }
+    if (!templateType) {
+      toast.error("Template type is required.");
+      return;
+    }
+    if (photos.length !== 3) {
+      toast.error("Exactly 3 photos are required.");
+      return;
+    }
+
+    // Confirm creation with user
+    const confirmed = window.confirm("Are you sure you want to create this template? Once created, the information cannot be changed.");
+    if (!confirmed) {
       return;
     }
 
@@ -76,7 +119,7 @@ const TemplateForm = ({ onNewTemplate }) => {
       console.error("Error creating template:", error);
       setError(
         error.response?.data?.message ||
-          "Failed to create template. Please try again."
+        "Failed to create template. Please try again."
       );
     } finally {
       setLoading(false);
