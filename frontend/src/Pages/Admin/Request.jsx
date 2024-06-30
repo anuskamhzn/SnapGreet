@@ -39,6 +39,15 @@ const Request = () => {
         }
     };
 
+    const rejectWish = async (id) => {
+        try {
+            await axios.patch(`${process.env.REACT_APP_API}/api/v1/admin/reject/${id}`);
+            fetchPendingWishes();
+        } catch (error) {
+            console.error("Error rejecting wish:", error);
+        }
+    };
+
     const arrayBufferToBase64 = (buffer) => {
         let binary = '';
         const bytes = new Uint8Array(buffer);
@@ -112,6 +121,12 @@ const Request = () => {
                                                     onClick={() => approveWish(wish._id)}
                                                 >
                                                     Approve
+                                                </button>
+                                                <button
+                                                    className="reject-button"
+                                                    onClick={() => rejectWish(wish._id)}
+                                                >
+                                                    Reject
                                                 </button>
                                             </div>
                                         </div>

@@ -20,7 +20,7 @@ const UserTemp = () => {
             setError(null); // Clear previous error
 
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/auth/usertemp/${auth.user._id}`);
+                const response = await axios.get(`/api/v1/auth/usertemp/${auth.user._id}`);
                 setTemplates(response.data || []);
             } catch (error) {
                 if (error.response && error.response.status === 404) {
@@ -76,11 +76,23 @@ const UserTemp = () => {
                             {!loading && templates.length > 0 && (
                                 templates.map((template, index) => (
                                     <div key={index} className="card">
-                                        <a
-                                            href={`https://resilient-moonbeam-0152f2.netlify.app/${template.templateType}/${template._id}`}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
+                                        {template.status !== 'rejected' ? (
+                                            <a
+                                                href={`http://localhost:3000/${template.templateType}/${template._id}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src={getImageSrc(template.templateType)}
+                                                    alt={`${template.templateType} preview`}
+                                                    className="card-img-top template-image"
+                                                    onError={(e) => {
+                                                        e.target.onerror = null; // Prevent infinite loop if fallback also fails
+                                                        e.target.src = getFallbackImageSrc(template.templateType);
+                                                    }}
+                                                />
+                                            </a>
+                                        ) : (
                                             <img
                                                 src={getImageSrc(template.templateType)}
                                                 alt={`${template.templateType} preview`}
@@ -90,16 +102,18 @@ const UserTemp = () => {
                                                     e.target.src = getFallbackImageSrc(template.templateType);
                                                 }}
                                             />
-                                        </a>
+                                        )}
                                         <div className="card-body">
                                             <h5 className="card-title">{template.templateType}</h5>
                                             <p className="card-text">{template.name}</p>
-                                            <button
-                                                onClick={() => handleUseTemplate(template.templateType)}
-                                                className="btn btn-primary"
-                                            >
-                                                Use Template
-                                            </button>
+                                            {template.status !== 'rejected' && (
+                                                <button
+                                                    onClick={() => handleUseTemplate(template.templateType)}
+                                                    className="btn btn-primary"
+                                                >
+                                                    Use Template
+                                                </button>
+                                            )}
                                         </div>
                                     </div>
                                 ))

@@ -33,16 +33,9 @@
   .dropdownItem {
     text-align: center !important;
   }
-<<<<<<< HEAD
-  .nav_text {
-    width: auto;
-    padding-top: 0px;
-=======
-  
   
   .dropdownItem:hover .dropdownText {
     color: #9e2222;
->>>>>>> 1e68d330743045631b5d1802944ebba1e4f6c613
   }
   .drop {
     width: auto;

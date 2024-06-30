@@ -52,22 +52,27 @@ const Notification = () => {
                         {!loading && !error && notifications.length === 0 && <p className="no-notifications">No notifications found.</p>}
                         {!loading && !error && notifications.length > 0 && (
                             <ul className="list-group">
-                                {notifications.map(notification => (
-                                    <li key={notification._id} className="notification">
-                                        <div className="content">
-                                            <div className="header">{notification.message}</div>
-                                            {/* Additional details if needed */}
-                                        </div>
-                                        <a
-                                            href={`https://resilient-moonbeam-0152f2.netlify.app/${notification.templateType}/${notification.birthdayModelId}`}
-                                            className="approve-button"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            Link to Template
-                                        </a>
-                                    </li>
-                                ))}
+                                {notifications.map(notification => {
+                                    const isRejected = notification.message.toLowerCase().includes('rejected');
+                                    return (
+                                        <li key={notification._id} className="notification">
+                                            <div className="content">
+                                                <div className="header">{notification.message}</div>
+                                                {/* Additional details if needed */}
+                                            </div>
+                                            {!isRejected && (
+                                                <a
+                                                    href={`https://resilient-moonbeam-0152f2.netlify.app/${notification.templateType}/${notification.birthdayModelId}`}
+                                                    className="approve-button"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    Link to Template
+                                                </a>
+                                            )}
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         )}
                     </div>

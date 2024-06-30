@@ -22,19 +22,19 @@
 }
 
 .notification .header {
-    font-size: 1.2em;
-    font-weight: bold;
+    font-size: medium;
+    font-weight:500;
     margin-bottom: 5px;
 }
 
 .notification .meta {
-    font-size: 1em;
+    font-size:medium;
     color: #888;
     margin-bottom: 10px;
 }
 
 .notification .description {
-    font-size: 1em;
+    font-size: medium;
 }
 
 .approve-button {
@@ -49,4 +49,19 @@
 
 .approve-button:hover {
     background-color: #0056b3;
+}
+
+.copy-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer/hand icon */
+    font-size: 14px; /* Font size */
+}
+
+.copy-button:hover {
+    background-color: #45a049; /* Darker green background on hover */
 }
