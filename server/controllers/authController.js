@@ -155,7 +155,7 @@ export const testController = (req, res) => {
 //update profile
 export const updateProfileController = async (req, res) => {
   try {
-    const { name, username, email, password, phone } = req.fields;
+    const { name, email, password, phone } = req.fields;
     const user = await userModel.findById(req.user._id);
 
     // Check if a photo was uploaded
@@ -172,8 +172,8 @@ export const updateProfileController = async (req, res) => {
     // Update user information
     const updatedFields = {
       name: name || user.name,
-      username: username || user.username,
       password: hashedPassword,
+      confirmPass: confirmPass || user.confirmPass,
       phone: phone || user.phone,
     };
 

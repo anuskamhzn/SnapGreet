@@ -48,7 +48,6 @@ const UserDashboard = () => {
                 </div>
                 <div className="col-md-5 d-flex flex-column justify-content-center">
                   <h5 className="py-3">Name: {auth?.user?.name}</h5>
-                  <h5 className="py-3">User Name: {auth?.user?.username}</h5>
                   <h5 className="py-3">Email: {auth?.user?.email}</h5>
                   <h5 className="py-3">Phone: {auth?.user?.phone}</h5>
                   <Link

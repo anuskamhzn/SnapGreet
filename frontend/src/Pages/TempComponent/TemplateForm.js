@@ -159,6 +159,7 @@ const TemplateForm = ({ onNewTemplate }) => {
             onChange={(e) => setDescription2(e.target.value)}
             required
           ></textarea>
+          <h6>Upload 3 photos here:</h6>
           <input type="file" multiple onChange={handlePhotoUpload} />
 
           {/* Display chosen photos */}

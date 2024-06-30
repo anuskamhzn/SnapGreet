@@ -52,9 +52,6 @@ const Notification = () => {
             <Header />
             <div className="container-fluid m-3 p-3 pt-4">
                 <div className="row">
-                    <div className="col-md-3">
-                        <UserMenu />
-                    </div>
                     <div className="col-md-9 pt-4 admin-container">
                         <h1>Notifications</h1>
                         {loading && <p className="loading">Loading...</p>}
