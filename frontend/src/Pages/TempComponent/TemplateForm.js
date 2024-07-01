@@ -45,6 +45,38 @@ const TemplateForm = ({ onNewTemplate }) => {
       return;
     }
 
+    // Frontend validation
+    if (!name) {
+      toast.error("Name is required.");
+      return;
+    }
+    if (!nickname) {
+      toast.error("Nickname is required.");
+      return;
+    }
+    if (!description1) {
+      toast.error("Description 1 is required.");
+      return;
+    }
+    if (!description2) {
+      toast.error("Description 2 is required.");
+      return;
+    }
+    if (!templateType) {
+      toast.error("Template type is required.");
+      return;
+    }
+    if (photos.length !== 3) {
+      toast.error("Exactly 3 photos are required.");
+      return;
+    }
+
+    // Confirm creation with user
+    const confirmed = window.confirm("Are you sure you want to create this template? Once created, the information cannot be changed.");
+    if (!confirmed) {
+      return;
+    }
+
     setLoading(true);
     setError(null);
 

@@ -44,6 +44,11 @@ const QRCode = () => {
     };
 
     const handleHome = () => {
+    // Confirm creation with user
+    const confirmed = window.confirm("Did you copied the code?");
+    if (!confirmed) {
+      return;
+    }
         // Set session storage and navigate to the homepage with state
         sessionStorage.setItem("showPopup", "true");
         navigate("/", { state: { showPopup: true } });
