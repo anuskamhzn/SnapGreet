@@ -8,6 +8,7 @@ import Real from "./js/Real";
 import Straight from "./js/Straighome";
 import TemplateSelector from "./TempComponent/TemplateSelector";
 import Popup from "./Popup/Popup.jsx";
+import Slider from "./TempComponent/slider.js";
 import "./Style.css";
 
 const HomePage = () => {

@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 
 // import required modules
-import { Autoplay } from "swiper/modules";
 
 const Header = () => {
   return (
@@ -17,21 +16,33 @@ const Header = () => {
                 <h1
                   class=" text-white mb-2 herotext "
                   style={{ width: "100%" }}
+                  data-aos="slide-up"
+                  data-aos-offset="100"
                 >
                   Create and share unforgettable moments with SnapGreet.{" "}
                 </h1>
-                <p class="fs-6 fw-medium text-white mb-2 ">
+                <p
+                  class="fs-6 fw-medium text-white mb-2 "
+                  data-aos="slide-up"
+                  data-aos-offset="100"
+                >
                   Create unforgettable moments.{" "}
                 </p>
                 <Link
                   to="/template"
                   id="gold"
                   class="btn btn-purple text-white rounded-pill py-sm-2 px-sm-4 mt-2 animated slideInLeft"
+                  data-aos="slide-up"
+                  data-aos-offset="100"
                 >
                   Let's Start
                 </Link>
               </div>
-              <div class=" col-3 col-sms-5 mockup">
+              <div
+                class=" col-3 col-sms-5 mockup"
+                data-aos="slide-up"
+                data-aos-offset="100"
+              >
                 <img src={mockup} className="img-fluid"></img>
               </div>
             </div>

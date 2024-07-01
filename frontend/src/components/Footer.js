@@ -89,16 +89,6 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i className="fab fa-twitter">
-                  <FaTwitter />
-                </i>
-              </a>
-              <a
-                className="btn btn-social"
-                href=""
-                target="_blank"
-                rel="noopener noreferrer"
-              >
                 <i className="fab fa-facebook-f">
                   <FaFacebook />
                 </i>
@@ -113,16 +103,7 @@ const Footer = () => {
                   <FaYoutube />
                 </i>
               </a>
-              <a
-                className="btn btn-social"
-                href=""
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-linkedin-in">
-                  <FaLinkedin />
-                </i>
-              </a>
+
               <a
                 className="btn btn-social"
                 href="https://www.instagram.com/snap.greet/"
