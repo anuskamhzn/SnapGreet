@@ -27,6 +27,7 @@ import { useAuth } from "./context/auth";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Password from "./Pages/User/Password";
+import QRCode from './Pages/User/QRCode';
 
 const App = () => {
   const [auth] = useAuth();
@@ -71,6 +72,7 @@ const App = () => {
         <Route path="/templatedetail/:templateType" element={<TemplateDetail />} />
         <Route path="/templateform/:templateType" element={<TemplateForm />} />
         <Route path="/:type/:id" element={<TemplateView />} />
+        <Route path="/code/:userId/:id" element= {<QRCode />}/>
 
         <Route path="/dashboard" element={<AdminRoutes />}>
           <Route path="admin" element={<AdminDashboard />} />

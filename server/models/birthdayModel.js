@@ -34,12 +34,16 @@ const birthdaySchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['pending', 'approved'],
+    enum: ['pending', 'approved', 'rejected'],
     default: 'pending'
   },
   postedBy: {
     type: mongoose.Schema.Types.ObjectId, // New field
     ref: "users", // Reference to User or Shelter collection
+    required: true,
+  },
+    randomChars: {
+    type: String,
     required: true,
   },
 });

@@ -28,6 +28,12 @@ const Register = () => {
       return;
     }
 
+    // Check if password is at least 6 characters long
+    if (password.length < 6) {
+      toast.error("Password should be at least 6 characters long");
+      return;
+    }
+
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {

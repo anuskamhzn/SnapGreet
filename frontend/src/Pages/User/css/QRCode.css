@@ -1,0 +1,20 @@
+/* src/components/QRCode.css */
+
+.card {
+    max-width: 500px;
+    margin: auto;
+}
+
+.card img {
+    max-width: 200px;
+    height: auto;
+}
+
+.card-subtitle {
+    color: red; /* Change the h6 subtitle to red */
+}
+
+.random-chars {
+    color: blue; /* Change the color of randomChars text */
+    font-weight: bold; /* Make the randomChars text bold */
+}

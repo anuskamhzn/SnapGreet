@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -20,22 +20,11 @@ const TemplateForm = ({ onNewTemplate }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    // Cleanup URL objects when component unmounts
-    return () => {
-      photoPreviews.forEach((previewUrl) => URL.revokeObjectURL(previewUrl));
-    };
-  }, [photoPreviews]);
-
   const handlePhotoUpload = (e) => {
     const files = Array.from(e.target.files);
 
-    // Reset previous previews
-    setPhotoPreviews([]);
-
     // Check if exactly 3 photos are selected
     if (files.length !== 3) {
-      setPhotos([]);
       toast.error("Please select exactly 3 photos.");
       return;
     }
@@ -56,38 +45,6 @@ const TemplateForm = ({ onNewTemplate }) => {
       return;
     }
 
-    // Frontend validation
-    if (!name) {
-      toast.error("Name is required.");
-      return;
-    }
-    if (!nickname) {
-      toast.error("Nickname is required.");
-      return;
-    }
-    if (!description1) {
-      toast.error("Description 1 is required.");
-      return;
-    }
-    if (!description2) {
-      toast.error("Description 2 is required.");
-      return;
-    }
-    if (!templateType) {
-      toast.error("Template type is required.");
-      return;
-    }
-    if (photos.length !== 3) {
-      toast.error("Exactly 3 photos are required.");
-      return;
-    }
-
-    // Confirm creation with user
-    const confirmed = window.confirm("Are you sure you want to create this template? Once created, the information cannot be changed.");
-    if (!confirmed) {
-      return;
-    }
-
     setLoading(true);
     setError(null);
 
@@ -102,19 +59,25 @@ const TemplateForm = ({ onNewTemplate }) => {
     });
 
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API}/api/v1/wish/template`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post("/api/v1/wish/template", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       // Set session storage and navigate to the homepage with state
-      sessionStorage.setItem("showPopup", "true");
-      navigate("/", { state: { showPopup: true } });
+      // sessionStorage.setItem("showPopup", "true");
+      // navigate("/", { state: { showPopup: true } });
+
+      // Extract postedBy and _id from the response data
+      const { postedBy, _id } = response.data.birthdayWish;
+
+      // Now you can use postedBy and _id as needed
+      console.log("postedBy:", postedBy);
+      console.log("_id:", _id);
+
+      navigate(`/code/${postedBy}/${_id}`);
+
     } catch (error) {
       console.error("Error creating template:", error);
       setError(
@@ -129,7 +92,7 @@ const TemplateForm = ({ onNewTemplate }) => {
   return (
     <>
       <Header />
-      <div className="template-form mt-5 pt-5">
+      <div className="template-form mt-4">
         <h2>Create Template</h2>
         {error && <div className="error">{error}</div>}
         <form onSubmit={handleSubmit} encType="multipart/form-data">
@@ -159,7 +122,6 @@ const TemplateForm = ({ onNewTemplate }) => {
             onChange={(e) => setDescription2(e.target.value)}
             required
           ></textarea>
-          <h6>Upload 3 photos here:</h6>
           <input type="file" multiple onChange={handlePhotoUpload} />
 
           {/* Display chosen photos */}
