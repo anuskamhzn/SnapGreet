@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useLocation } from "react-router-dom";
 import Hero from "./js/Hero.jsx";
-import ChoosingUs from "./js/ChoosingUs/ChoosingUs.js";
 import Real from "./js/Real";
 import Straight from "./js/Straighome";
 import TemplateSelector from "./TempComponent/TemplateSelector";

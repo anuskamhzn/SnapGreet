@@ -19,9 +19,16 @@ export const getNotificationsController = async (req, res) => {
             try {
                 const birthday = await Birthday.findById(notification.birthdayModelId); // Use birthdayModelId to fetch birthday
                 const name = birthday ? birthday.name : 'Unknown'; // Handle case where birthday might not be found
+                let message = `Your template for ${name} is ready`;
+
+                // Check if the wish was rejected
+                if (birthday && birthday.status === 'rejected') {
+                    message = `Your birthday wish for ${name} was rejected.`;
+                }
+
                 return {
                     ...notification.toObject(),
-                    message: `Your template for ${name} is ready`,
+                    message,
                 };
             } catch (error) {
                 console.error(`Error fetching birthday for notification ${notification._id}:`, error);

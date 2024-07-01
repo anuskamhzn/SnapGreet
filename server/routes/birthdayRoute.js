@@ -8,6 +8,7 @@ import {
     birthdayPhotoController,
     getTemplateController,
     requestController,
+    getRandomCharsByUserController,
 } from '../controllers/birthdayController.js';
 
 const router = express.Router();
@@ -24,5 +25,6 @@ router.get('/user', getUserController);
 router.get('/photo/:bid/:pid', birthdayPhotoController);
 router.get('/template/:type/:id', getTemplateController);
 router.get('/requests/:id', requestController);
+router.get('/random/:userId/:id', getRandomCharsByUserController);
 
 export default router;

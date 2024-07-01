@@ -35,7 +35,11 @@
   .dropdownItem {
     text-align: center !important;
   }
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> d1789c86065b8304d692fd5eb0ae2ef8b9f3f8cc
   .dropdownItem:hover .dropdownText {
     color: #9e2222;
   }

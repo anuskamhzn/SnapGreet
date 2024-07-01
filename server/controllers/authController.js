@@ -20,6 +20,11 @@ export const registerController = async (req, res) => {
       return res.status(400).json({ message: "Passwords do not match" });
     }
 
+    // Check if password is at least 6 characters long
+    if (password.length < 6) {
+      return res.status(400).json({ message: "Password should be at least 6 characters long" });
+    }
+
     // Check if the user already exists
     const existingUser = await userModel.findOne({ email });
     if (existingUser) {
@@ -49,6 +54,7 @@ export const registerController = async (req, res) => {
     res.status(500).json({ success: false, message: "Error in registration", error });
   }
 };
+
 
 //POST LOGIN
 export const loginController = async (req, res) => {
@@ -155,7 +161,7 @@ export const testController = (req, res) => {
 //update profile
 export const updateProfileController = async (req, res) => {
   try {
-    const { name, username, email, password, phone } = req.fields;
+    const { name, email, password, phone } = req.fields;
     const user = await userModel.findById(req.user._id);
 
     // Check if a photo was uploaded
@@ -172,8 +178,8 @@ export const updateProfileController = async (req, res) => {
     // Update user information
     const updatedFields = {
       name: name || user.name,
-      username: username || user.username,
       password: hashedPassword,
+      confirmPass: confirmPass || user.confirmPass,
       phone: phone || user.phone,
     };
 
