@@ -112,6 +112,7 @@ const Request = () => {
                                                     <div className="header">
                                                         {wish.postedBy.name} : {wish.postedBy.phone}
                                                     </div>
+                                                    <div className='header'>Code: {wish.randomChars}</div>
                                                     <div className="meta">{wish.templateType} : {wish.name}</div>
                                                 </div>
                                             </div>
