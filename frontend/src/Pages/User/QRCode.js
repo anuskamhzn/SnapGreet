@@ -19,7 +19,7 @@ const QRCode = () => {
     useEffect(() => {
         const fetchRandomChars = async () => {
             try {
-                const response = await axios.get(`/api/v1/wish/random/${userId}/${id}`);
+                const response = await axios.get(`${process.env.REACT_APP_API}/api/v1/wish/random/${userId}/${id}`);
                 setRandomChars(response.data.randomChars);
             } catch (err) {
                 setError(err.message);
