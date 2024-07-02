@@ -129,7 +129,12 @@ le.css */
   font-weight: 300;
 }
 .btn-hero {
-  background-color: rgb(28, 26, 26) !important;
+  background-color: #d9d9d9 !important;
+  border-radius: 1rem;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: black;
+  border: none;
 }
 
 /* .swiper img {
@@ -150,7 +155,6 @@ le.css */
   border-radius: 2rem;
 }
 .Featured {
-  background-color: #eeeff0;
   padding-top: 4rem;
   padding-bottom: 4rem;
   font-family: "Poppins" !important ;
@@ -172,16 +176,36 @@ le.css */
 }
 .btn-more {
   font-size: 15px;
-  background-color: #e186f6;
+  background-color: #ae20ce;
   border-radius: 1rem;
   padding-left: 15px;
   padding-right: 15px;
   color: white;
   border: none;
 }
+.card-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #929292;
+}
 @media screen and (max-width: 500px) {
   .btn-more {
     width: 100%;
+  }
+  .btn-hero {
+    font-size: 13px;
+    background-color: #d9d9d9 !important;
+    border-radius: 1rem;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: black;
+    border: none;
+  }
+  .card-text {
+    font-size: 12px;
+  }
+  .card-text p {
+    margin-bottom: 5px;
   }
 }
 .btn-more:hover {
@@ -192,11 +216,6 @@ le.css */
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
-.card-text {
-  font-size: 14px;
-  font-weight: 400;
-  color: #929292;
-}
 .all-pets {
   padding-top: 3rem;
   align-items: center;
@@ -411,4 +430,42 @@ le.css */
   bottom: 2%;
   position: relative;
   width: 70%;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: unset !important;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-text {
+  background-color: #2f2e2e;
+  padding: 0.5rem;
+  border-bottom-left-radius: 10px; /* Adjust the value as needed */
+  border-bottom-right-radius: 10px;
+}
+
+.swiper-pagination {
+  position: static !important;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  font-size: 12px !important;
+  height: 12px !important;
+  color: #4e2d69;
 }

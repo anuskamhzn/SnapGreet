@@ -50,9 +50,9 @@ const Login = () => {
 
   return (
     <>
-      <div className="container register">
-        <div className=" row mx-2  mb-4 mt-4 justify-content-center align-item-center loginpage">
-          <div className="col-md-5 text-center">
+      <div className="register container-fluid">
+        <div className=" row  mx-2  mb-4  loginpage align-items-center justify-content-center">
+          <div className="col-lg-5 col-md-5 text-center mb-4">
             <img
               src={pethouse}
               className="img-fluid"
@@ -60,8 +60,13 @@ const Login = () => {
               data-aos-offset="100"
               alt="Pet House"
             />
+
+            <p className="slogan">
+              Send <span className="love">Digital Greetings</span>,<br></br>{" "}
+              Create <span className="love">Joyful Moments</span>
+            </p>
           </div>{" "}
-          <div className="col-md-5">
+          <div className="col-lg-4 col-md-5">
             <form onSubmit={handleSubmit}>
               <div
                 className="mb-3 position-relative"
@@ -101,14 +106,14 @@ const Login = () => {
                   required
                 />
               </div>
-              <div className="" data-aos="slide-up" data-aos-offset="100">
+              <div className="mb-4" data-aos="slide-up" data-aos-offset="100">
                 <NavLink to="/forgot-password" className="btn">
                   Forgot Password?
                 </NavLink>
               </div>
               <button
                 type="submit"
-                className="btn-more px-5 py-3 btn-login mx-1 mb-2"
+                className="btn-more px-5 py-3 btn-login  "
                 data-aos="slide-up"
                 data-aos-offset="50"
               >
@@ -119,7 +124,7 @@ const Login = () => {
                 Don't have an account?
                 <NavLink
                   to="/register"
-                  className="snapcolor px-1 mb-4"
+                  className="purple px-1 mb-4"
                   data-aos="slide-up"
                   data-aos-offset="50"
                 >

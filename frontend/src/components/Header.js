@@ -7,32 +7,10 @@ import logo from "../imag/snapgreetlogo.png";
 import defaultProfilePhoto from "../imag/user/profile.jpg";
 import add from "../imag/icons/add.png";
 import notification from "../imag/icons/notification.png";
+import { AiFillHome } from "react-icons/ai";
+import { MdNotifications } from "react-icons/md";
 
 const Header = () => {
-  const [show, setShow] = useState(false);
-  const [activeNav, setActiveNav] = useState([true, false, false, false]);
-  const [expand, setExpand] = useState(false);
-
-  const closeNav = () => {
-    setExpand(false);
-  };
-
-  const showDropdown = (e) => {
-    setShow(!show);
-  };
-
-  const hideDropdown = (e) => {
-    setShow(false);
-  };
-
-  const handleActiveNav = (i) => {
-    let temp = activeNav;
-    temp = temp.map((x) => (x = false));
-    temp[i] = true;
-    setActiveNav([...temp]);
-    sessionStorage.setItem("NavbarMain", JSON.stringify(temp));
-  };
-
   const [auth, setAuth] = useAuth();
 
   const handleLogout = () => {
@@ -52,7 +30,7 @@ const Header = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg ">
-        <div className=" container nav-container px-4 py-2">
+        <div className="container nav-container px-4 py-2">
           <Link to="/" className="navbar-brand">
             <div className="d-flex">
               <div className="logoimg">
@@ -62,39 +40,32 @@ const Header = () => {
             </div>
           </Link>
 
-          <div className=" justify-content-end d-flex align-items-center rightnav">
-            <div className="nav-item  rightnavicon">
+          <div className="justify-content-end d-flex align-items-center rightnav">
+            <div className="nav-item rightnavicon">
               <NavLink
-                to="/template"
-                onClick={() => {
-                  handleActiveNav(3);
-                  closeNav();
-                }}
+                to="/"
+                className="nav-link"
+                activeClassName="nav-icon-active"
                 aria-current="page"
               >
-                <img src={add} className=" nav-icon-1 add" alt="Add"></img>
-              </NavLink>
-            </div>{" "}
-            <div className="nav-item  rightnavicon">
-              <NavLink
-                to="/dashboard/user/notification"
-                className={`${styles.nav_text} nav-link ${
-                  activeNav[0] ? styles.active : ""
-                }`}
-                onClick={() => {
-                  handleActiveNav(0);
-                  closeNav();
-                }}
-                aria-current="page"
-              >
-                <img
-                  src={notification}
-                  className="img-fluid nav-icon"
-                  alt="Notification"
-                ></img>
+                <div className="nav-icon">
+                  <AiFillHome />
+                </div>
               </NavLink>
             </div>
-            <div className="nav-item  mt-1">
+            <div className="nav-item rightnavicon">
+              <NavLink
+                to="/dashboard/user/notification"
+                className="nav-link"
+                activeClassName="nav-icon-active"
+                aria-current="page"
+              >
+                <div className="nav-icon-1">
+                  <MdNotifications />
+                </div>
+              </NavLink>
+            </div>
+            <div className="nav-item mt-1">
               {auth.user ? (
                 <NavLink
                   to={`/dashboard/${
@@ -116,7 +87,7 @@ const Header = () => {
                 </NavLink>
               ) : (
                 <li className="nav-item mx-2 loginbtn ">
-                  <Link to="/login" className=" dark-font nav-link px-2">
+                  <Link to="/login" className="dark-font nav-link px-2">
                     Login
                   </Link>
                 </li>

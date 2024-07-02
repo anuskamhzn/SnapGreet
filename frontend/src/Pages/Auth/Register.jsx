@@ -68,19 +68,19 @@ const Register = () => {
     <>
       <div className="container register">
         <div className=" row mx-2 mt-5 justify-content-center align-item-center loginpage">
-          <div className="col-md-5 text-center">
+          <div className="col-md-5 px-4">
             {" "}
-            <img
-              src={pethouse}
-              className="img-fluid"
-              data-aos="fade"
-              data-aos-offset="100"
-              alt="Pet House"
-            />
+            <h1 className="purple" data-aos="slide-up" data-aos-offset="100">
+              Register
+            </h1>
           </div>
           <div className="col-md-5 p-4">
             <form onSubmit={handleSubmit}>
-              <div className="mb-3 position-relative">
+              <div
+                className="mb-3 position-relative"
+                data-aos="slide-up"
+                data-aos-offset="100"
+              >
                 <p>Enter your name</p>
                 <span className="input-icons">
                   <CgProfile />
@@ -94,7 +94,11 @@ const Register = () => {
                   required
                 />
               </div>
-              <div className="mb-3 position-relative">
+              <div
+                className="mb-3 position-relative"
+                data-aos="slide-up"
+                data-aos-offset="100"
+              >
                 <p>Enter your email</p>
                 <span className="input-icons">
                   <MdOutlineAlternateEmail />
@@ -108,7 +112,11 @@ const Register = () => {
                   required
                 />
               </div>
-              <div className="mb-3 position-relative">
+              <div
+                className="mb-3 position-relative"
+                data-aos="slide-up"
+                data-aos-offset="100"
+              >
                 <p>Enter password</p>
                 <span className="input-icons">
                   <MdLockOpen />
@@ -122,7 +130,11 @@ const Register = () => {
                   required
                 />
               </div>
-              <div className="mb-3 position-relative">
+              <div
+                className="mb-3 position-relative"
+                data-aos="slide-up"
+                data-aos-offset="100"
+              >
                 <p>Confirm password</p>{" "}
                 <span className="input-icons">
                   <MdLockOpen />
@@ -136,7 +148,11 @@ const Register = () => {
                   required
                 />
               </div>
-              <div className="mb-3 position-relative">
+              <div
+                className="mb-3 position-relative"
+                data-aos="slide-up"
+                data-aos-offset="100"
+              >
                 <p>Enter your number</p>
                 <span className="input-icons">
                   <MdOutlinePhone />
@@ -151,7 +167,12 @@ const Register = () => {
                   required
                 />
               </div>
-              <button type="submit" className="btn-more px-3 py-2">
+              <button
+                type="submit"
+                className="btn-more px-3 py-2"
+                data-aos="slide-up"
+                data-aos-offset="100"
+              >
                 Submit
               </button>
               <p>
@@ -159,7 +180,7 @@ const Register = () => {
                 Already have an account?
                 <NavLink
                   to="/login"
-                  className="snapcolor px-1 mb-4"
+                  className="purple px-1 mb-4"
                   data-aos="slide-up"
                   data-aos-offset="50"
                 >
