@@ -58,15 +58,14 @@ const UserTemp = () => {
     return `/template-previews/${templateType}.png`;
   };
 
-<<<<<<< HEAD
   const handleUseTemplate = (templateType) => {
-    navigate(`/templateform/${templateType}`);
+    navigate(`/use-template/${templateType}`);
   };
 
   return (
     <>
       <Header />
-      <div className="container p-3 pt-4">
+      <div className="container-fluid m-3 p-3 pt-4">
         <div className="row">
           <div className="col-md-3">
             <UserMenu />
@@ -76,100 +75,51 @@ const UserTemp = () => {
             <div className="card-container">
               {loading && <p className="loading">Loading...</p>}
               {!loading && templates.length === 0 && <p>No templates found.</p>}
-              {!loading &&
-                templates.length > 0 &&
+              {!loading && templates.length > 0 && (
                 templates.map((template, index) => (
                   <div key={index} className="card">
-                    <a
-                      href={`https://resilient-moonbeam-0152f2.netlify.app/${template.templateType}/${template._id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    {template.status !== 'rejected' ? (
+                      <a
+                        href={`https://resilient-moonbeam-0152f2.netlify.app/${template.templateType}/${template._id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          src={getImageSrc(template.templateType)}
+                          alt={`${template.templateType} preview`}
+                          className="card-img-top template-image"
+                          onError={(e) => {
+                            e.target.onerror = null; // Prevent infinite loop if fallback also fails
+                            e.target.src = getFallbackImageSrc(template.templateType);
+                          }}
+                        />
+                      </a>
+                    ) : (
                       <img
                         src={getImageSrc(template.templateType)}
                         alt={`${template.templateType} preview`}
                         className="card-img-top template-image"
                         onError={(e) => {
                           e.target.onerror = null; // Prevent infinite loop if fallback also fails
-                          e.target.src = getFallbackImageSrc(
-                            template.templateType
-                          );
+                          e.target.src = getFallbackImageSrc(template.templateType);
                         }}
                       />
-                    </a>
+                    )}
                     <div className="card-body">
                       <h5 className="card-title">{template.templateType}</h5>
                       <p className="card-text">{template.name}</p>
-                      <button
-                        onClick={() => handleUseTemplate(template.templateType)}
-                        className="btn btn-primary"
-                      >
-                        Use Template
-                      </button>
-=======
-    return (
-        <>
-            <Header />
-            <div className="container-fluid m-3 p-3 pt-4">
-                <div className="row">
-                    <div className="col-md-3">
-                        <UserMenu />
-                    </div>
-                    <div className="col-md-9 pt-4">
-                        <h1>All Used Templates</h1>
-                        <div className="card-container">
-                            {loading && <p className="loading">Loading...</p>}
-                            {!loading && templates.length === 0 && <p>No templates found.</p>}
-                            {!loading && templates.length > 0 && (
-                                templates.map((template, index) => (
-                                    <div key={index} className="card">
-                                        {template.status !== 'rejected' ? (
-                                            <a
-                                                href={`https://resilient-moonbeam-0152f2.netlify.app/${template.templateType}/${template._id}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img
-                                                    src={getImageSrc(template.templateType)}
-                                                    alt={`${template.templateType} preview`}
-                                                    className="card-img-top template-image"
-                                                    onError={(e) => {
-                                                        e.target.onerror = null; // Prevent infinite loop if fallback also fails
-                                                        e.target.src = getFallbackImageSrc(template.templateType);
-                                                    }}
-                                                />
-                                            </a>
-                                        ) : (
-                                            <img
-                                                src={getImageSrc(template.templateType)}
-                                                alt={`${template.templateType} preview`}
-                                                className="card-img-top template-image"
-                                                onError={(e) => {
-                                                    e.target.onerror = null; // Prevent infinite loop if fallback also fails
-                                                    e.target.src = getFallbackImageSrc(template.templateType);
-                                                }}
-                                            />
-                                        )}
-                                        <div className="card-body">
-                                            <h5 className="card-title">{template.templateType}</h5>
-                                            <p className="card-text">{template.name}</p>
-                                            {template.status !== 'rejected' && (
-                                                <button
-                                                    onClick={() => handleUseTemplate(template.templateType)}
-                                                    className="btn btn-primary"
-                                                >
-                                                    Use Template
-                                                </button>
-                                            )}
-                                        </div>
-                                    </div>
-                                ))
-                            )}
-                        </div>
->>>>>>> b3431c777eb7a3e4d4bbd49b14815d86ecc0d454
+                      {template.status !== 'rejected' && (
+                        <button
+                          onClick={() => handleUseTemplate(template.templateType)}
+                          className="btn btn-primary"
+                        >
+                          Use Template
+                        </button>
+                      )}
                     </div>
                   </div>
-                ))}
+                ))
+              )}
             </div>
           </div>
         </div>
